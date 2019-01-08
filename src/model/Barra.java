@@ -15,7 +15,7 @@ public class Barra {
 }
    public Rectangle2D getBarra() {
         return new Rectangle2D.Double(x, y, ANCHO, ALTO);
-}
+} //desplazamineto de la barra
    public void MoverBarra (Rectangle limites) {
         if (Teclado.a && x > limites.getMinY()) {
             x--;

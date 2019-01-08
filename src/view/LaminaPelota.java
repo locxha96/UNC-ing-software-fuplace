@@ -33,7 +33,7 @@ public void dibujar(Graphics2D g) {
   
        g.fill(ba.getBarra());
     }
- public void actualizar() { //para mover la barra
+ public void actualizar() { //para mover la barra en la lamina
  ba.MoverBarra(getBounds());
     }
 //este metodo se llama automaticamente cuando se lo necesita para dibujar pelota y barra

@@ -20,7 +20,7 @@ public class Teclado extends KeyAdapter{
         }
    
     }
-//invocado cuando se suelta la tecla
+//invocado cuando se suelta una tecla
     @Override
     public void keyReleased(KeyEvent e) {
 

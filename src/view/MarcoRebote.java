@@ -59,7 +59,7 @@ int score=0;
         c.add(boton);
         boton.addActionListener(oyente);
     }
-//Añade pelota y la bota nuchas veces
+//Añade pelota y la rebota nuchas veces
 
 private ControllerInterface Controller;
 public void comienza_el_juego ()
