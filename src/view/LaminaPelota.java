@@ -12,7 +12,7 @@ import model.Pelota;
 
 public class LaminaPelota extends JPanel
 {
-    Barra ba= new Barra(200,300);
+    Barra ba= new Barra(5,650);
 private ArrayList<Pelota> pelotas=new ArrayList<Pelota>();
 //Añadimos pelota a la lámina
 public void add(Pelota b)
@@ -33,7 +33,10 @@ public void dibujar(Graphics2D g) {
   
        g.fill(ba.getBarra());
     }
-
+ public void actualizar() { //para mover la barra
+ ba.MoverBarra(getBounds());
+    }
+//este metodo se llama automaticamente cuando se lo necesita para dibujar pelota y barra
 public void paintComponent(Graphics g) 
 {
 super.paintComponent(g);
@@ -42,6 +45,7 @@ g.fillRect(0,0,getWidth(),getHeight());
 Graphics2D g2 = (Graphics2D) g;
 g2.setColor(Color.WHITE);
 dibujar(g2);
+actualizar();//ACA SE PODRIA USAR OBSERVER PARA la barra y buscar EL METODO Q MUEVE actu la pelota!!!
 
 try
 {

@@ -15,10 +15,10 @@ import controller.ControllerInterface;
 import controller.NivelFacil;
 import controller.NivelMedio;
 import controller.NivelDificil;
-import java.awt.Graphics;
-import model.Barra;
+
 
 import model.Pelota;
+import model.Teclado;
 
 public class MarcoRebote extends JFrame {
 int score=0;
@@ -28,6 +28,7 @@ int score=0;
     public MarcoRebote() {
         setBounds(900, 800, 800, 800);
         setTitle("Break Bricks");
+        addKeyListener(new Teclado());//creo una clase teclado 
         lamina = new LaminaPelota();
         this.add(lamina, BorderLayout.CENTER);
         JPanel laminaBotones = new JPanel();
@@ -63,6 +64,8 @@ int score=0;
 private ControllerInterface Controller;
 public void comienza_el_juego ()
 {
+    
+    //seleccion del nivel de dificultad
 int lvl=Integer.parseInt(ventana.getText());
 if(lvl==1){
    Controller = new NivelFacil();
