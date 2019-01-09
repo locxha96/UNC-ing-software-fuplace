@@ -4,7 +4,8 @@ package model;
 import java.awt.Rectangle;
 import java.awt.geom.Rectangle2D;
 
-public class Barra {
+
+public class Barra{
     private int x,y;
    static final int ANCHO = 80, ALTO = 10;
     
@@ -23,6 +24,7 @@ public class Barra {
         if (Teclado.d && x < limites.getMaxY()-ALTO) {
             x++;
         }
+        
     }
 
     }

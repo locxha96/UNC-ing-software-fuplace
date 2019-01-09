@@ -1,15 +1,24 @@
 
 package main;
 
-import javax.swing.JFrame;
-import view.MarcoRebote;
+
+import model.Jugador;
+import model.ObservadorGrafico;
+
+import view.Principal;
 
 public class Break {
 public static void main(String[] args) 
 {
-// TODO Auto-generated method stub
-JFrame marco=new MarcoRebote();
-//marco.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-marco.setVisible(true);
+Jugador j= new Jugador("Pedro");
+ObservadorGrafico o= new ObservadorGrafico();
+j.addObserver(o);
+
+Principal v = new Principal();
+v.setLocationRelativeTo(null);
+v.setVisible(true);
+j.setVidas(0);
+j.notifyObservers();
+
 }
 }

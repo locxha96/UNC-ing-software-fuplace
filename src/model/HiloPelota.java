@@ -4,17 +4,19 @@ import view.LaminaPelota;
 
 public class HiloPelota extends Thread//implements Runnable
 {
-    private Pelota pelota;
+   //para actualizar la pelota
+    
     private static LaminaPelota lamina;
-public HiloPelota(Pelota pelota, LaminaPelota lamina)
+   
+public HiloPelota(LaminaPelota lamina)
     {
-     this.pelota=pelota;
+
      this.lamina=lamina;
     }
 public void run()
     {
-lamina.add(pelota);
-
-pelota.mueve_pelota(lamina.getBounds());
-    }
-}
+while(true)
+ {lamina.repaint();
+   }
+ 
+}}
