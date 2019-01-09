@@ -43,12 +43,20 @@ public Pelota()
 x=(int)(Math.random()*200);
 y=(int)(Math.random()*200);
 }
+    public Rectangle2D getPelota() {
+        return new Rectangle2D.Double(x, y, TAMX, TAMY);
+    }
 // Mueve la pelota invirtiendo posición si choca con límites
-public void mueve_pelota(Rectangle2D limites)
+public void mueve_pelota(Rectangle2D limites, boolean colisionBarra)
 {
 this.limites=limites;
 x=dx+x;
 y=dy+y;
+
+if(colisionBarra){
+dy=-dy;
+y=625;
+}
 if(x+TAMX>=limites.getMaxX())
 {
 x=limites.getMaxX() - TAMX;
@@ -85,7 +93,7 @@ g.setColor(color);
 
 Graphics2D g2=(Graphics2D) g;
 g2.fill(new Ellipse2D.Double(x,y,TAMX,TAMY));
-     mueve_pelota(limites);
+mueve_pelota(limites, true);
     }
     public double getX()
     {  

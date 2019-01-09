@@ -6,6 +6,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
 import javax.swing.JPanel;
+import java.awt.geom.Rectangle2D;
 import model.Barra;
 import model.Pelota;
 
@@ -37,8 +38,12 @@ public void dibujar(Graphics2D g) {
     }
  public void actualizar() { //para mover la barra en la laminaa
  ba.MoverBarra(getBounds());
- pelota.mueve_pelota(getBounds());
+ pelota.mueve_pelota(getBounds(), colision(ba.getBarra()));
     }
+ 
+ private boolean colision(Rectangle2D r){
+ return pelota.getPelota().intersects(r);
+ }
 //este metodo se llama automaticamente cuando se lo necesita para dibujar pelota y barra
 public void paintComponent(Graphics g) 
 {
