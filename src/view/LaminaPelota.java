@@ -21,7 +21,7 @@ public void add(Pelota b)
 {
 pelotas.add(b);
 }
-
+//borrar esto
 public void eliminar()
 {
 if(!pelotas.isEmpty()) 

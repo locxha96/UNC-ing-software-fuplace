@@ -2,7 +2,7 @@
 package model;
 import view.LaminaPelota;
 
-public class HiloPelota extends Thread//implements Runnable
+public class HiloPelota extends Thread
 {
    //para actualizar la pelota
     

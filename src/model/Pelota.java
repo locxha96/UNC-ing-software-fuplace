@@ -82,9 +82,7 @@ public Ellipse2D getShape()
    public void pintar_bola(Graphics g)
     {
 g.setColor(color);
-//int x1 =(int)x;
-     //int y1 =(int)y;
-     //g.fillOval(x1,y1,TAMX,TAMY);
+
 Graphics2D g2=(Graphics2D) g;
 g2.fill(new Ellipse2D.Double(x,y,TAMX,TAMY));
      mueve_pelota(limites);

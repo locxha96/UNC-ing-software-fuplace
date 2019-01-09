@@ -15,7 +15,7 @@ public class Jugador extends Observable {
 
     public void setVidas(int Vidas) {
         this.Vidas = Vidas;
-        if(Vidas==0){
+        if(Vidas==0){//llama solo si perdio
         setChanged();}
     }
 
