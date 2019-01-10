@@ -3,10 +3,9 @@ package model;
 
 
 import java.awt.Color;
-
+import java.awt.Rectangle;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Rectangle;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
 
@@ -32,6 +31,8 @@ this.color=color;
 x=(int)(Math.random()*200);
 y=(int)(Math.random()*200);
 }
+// Lo podemos usar para la seleccion de nivel, pero no es necesario darle un color, solo el diametro para el nivel
+/* 
 public Pelota(Color color,int diametro)
 {
 TAMX=diametro;
@@ -40,11 +41,11 @@ masa=diametro*10;
 this.color=color;
 x=(int)(Math.random()*200);
 y=(int)(Math.random()*200);
-}
+}*/
 public Pelota()
 {   
-x=(int)(Math.random()*200);
-y=(int)(Math.random()*200);
+x=3000;
+y=4000;
 }
     public Rectangle2D getPelota() {
         return new Rectangle2D.Double(x, y, TAMX, TAMY);
@@ -81,7 +82,7 @@ y=limites.getMinY();
 dy=-dy;
 }
           // Posible colision con bloques
-          /*A:  for(int i = 0; i<mapa.mapa.length; i++){
+       /*   A:  for(int i = 0; i<mapa.mapa.length; i++){
             for(int j = 0; j<mapa.mapa[0].length; j++){
                 if(mapa.mapa[i][j] > 0){
                 int bloqueX = j*mapa.anchoBloque+25;
@@ -154,20 +155,5 @@ public void setDy(double desplazamientoy)
     {  
      dy=desplazamientoy;
     }
-public static boolean choque(Pelota pelota1,Pelota pelota2)
-     {
-     double x1=pelota1.getX();
-double y1=pelota1.getY();
-float radio1=pelota1.getRadio();
-double x2=pelota2.getX();
-double y2=pelota2.getY();
-float radio2=pelota2.getRadio();
-if((Math.pow((x2-x1), 2)+Math.pow((y2-y1), 
-2))<=Math.pow((radio1+radio2),2))
-     {
-return true;
-     }
-else
-return false;
-    }
+
 }

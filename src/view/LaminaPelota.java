@@ -16,7 +16,7 @@ public class LaminaPelota extends JPanel
 {
       Pelota pelota = new Pelota();
       Barra ba= new Barra(5,750);
-      //private int bloquesTotal = 21;
+      private int bloquesTotal = 21;
       private GeneradorBloques mapa;
 private ArrayList<Pelota> pelotas=new ArrayList<Pelota>();
 //Añadimos pelota a la lámina
@@ -52,7 +52,7 @@ public void dibujar(Graphics2D g) {
 {
 super.paintComponent(g);
 g.setColor(new Color( 245, 245, 220 ));
-g.fillRect(0,0,getWidth(),getHeight());
+g.fillRect(0,0,getWidth(),getHeight());//fondo
 Graphics2D g2 = (Graphics2D) g; //lo convierto
 g2.setColor(Color.BLACK);
 dibujar(g2);
@@ -68,30 +68,7 @@ for(int i=0; i < pelotas.size(); i++)
         {
          for(int j=i+1;j<pelotas.size(); j++)
          
-if(Pelota.choque(pelotas.get(i),pelotas.get(j)))
-          {
-				System.out.println("Choque: "+i+" , "+j);
-                         	  double masa1=pelotas.get(i).getMasa();
-		        		  double velocidadx1=pelotas.get(i).getDx();
-		        		  double velocidady1=pelotas.get(i).getDy();
-		        		  
-		        		  double masa2=pelotas.get(j).getMasa();
-		        		  double velocidadx2=pelotas.get(j).getDx();
-		        		  double velocidady2=pelotas.get(j).getDy();
-		        		  
-		        		  double sumaMasas=masa1+masa2;
-		        		  
-		        		  double velocidadF1x=((masa1-masa2)*velocidadx1+2*masa2*velocidadx2)/sumaMasas;
-		        		  double velocidadF1y=((masa1-masa2)*velocidady1+2*masa2*velocidady2)/sumaMasas;
-		        		  
-		        		  double velocidadF2x=((masa2-masa1)*velocidadx2+2*masa1*velocidadx1)/sumaMasas;
-		        		  double velocidadF2y=((masa2-masa1)*velocidady2+2*masa1*velocidady1)/sumaMasas;
-		        		  
-		        		  pelotas.get(i).setDx(velocidadF1x);
-		        		  pelotas.get(i).setDy(velocidadF1y);
-		        		  pelotas.get(j).setDx(velocidadF2x);
-		        		  pelotas.get(j).setDy(velocidadF2y);
-  }
+
 pelotas.get(i).pintar_bola(g);
         }
 else
@@ -99,7 +76,7 @@ else
 pelotas.get(i).pintar_bola(g);
         }
 }
-Thread.sleep(5);
+Thread.sleep(3);//velocidad de hilo
 }
 catch(InterruptedException e)
 {

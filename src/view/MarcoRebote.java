@@ -28,14 +28,14 @@ int score=0;
         this.add(lamina, BorderLayout.CENTER);
         hilo= new HiloPelota(lamina);
       
-        Controller = new NivelFacil();
-       
+     //   Controller = new NivelFacil();
+    //   Pelota pelota=new Pelota(new Color(Controller.getr(),Controller.getg(),Controller.getb()),Controller.getRadio());
     }
 
-  private ControllerInterface Controller;
+  //private ControllerInterface Controller;
 
-//VER COMO SE SELECIONA EL NIVEL
-
+//VER COMO SE SELECIONA EL NIVEL, LUGEO CAMBIAR ESTO !!!!
+/*
 public void comienza_el_juego ()
 {
     
@@ -50,5 +50,5 @@ if(lvl==2){
 }else{Controller = new NivelDificil();}
 Pelota pelota=new Pelota(new Color(Controller.getr(),Controller.getg(),Controller.getb()),Controller.getRadio());
 
-}
+}*/
 }
