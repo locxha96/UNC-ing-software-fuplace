@@ -11,6 +11,7 @@ import java.awt.geom.Rectangle2D;
 
 public class Pelota
 {
+  boolean borrar=false;
 private float TAMX=15;//eje x elipse (en el circulo si son 
 
 private float masa;
@@ -51,7 +52,7 @@ y=4000;
         return new Rectangle2D.Double(x, y, TAMX, TAMY);
     }
 // Mueve la pelota invirtiendo posición si choca con límites
-public void mueve_pelota(Rectangle2D limites, boolean colisionBarra)
+public void mueve_pelota(Rectangle2D limites, boolean colisionBarra, boolean colisionBlock)
 {
 this.limites=limites;
 x=dx+x;
@@ -60,6 +61,11 @@ y=dy+y;
 if(colisionBarra){
 dy=-dy;
 y=730;
+}
+if(colisionBlock){
+dy=-dy;
+y=200;
+borrarBlock();
 }
 if(x+TAMX>=limites.getMaxX())
 {
@@ -105,7 +111,13 @@ dy=-dy;
          }
         }*/
     }
-
+public void borrarBlock(){
+    borrar=true;
+    
+}
+public boolean getValor(){
+    return borrar;
+}
 //Forma de la pelota en su posición inicial
 public Ellipse2D getShape()
 {
@@ -121,7 +133,7 @@ public Ellipse2D getShape()
 
     Graphics2D g2=(Graphics2D) g;
     g2.fill(new Ellipse2D.Double(x,y,TAMX,TAMY));
-    mueve_pelota(limites, true);
+    mueve_pelota(limites, true, true);
     }
     public double getX()
     {  

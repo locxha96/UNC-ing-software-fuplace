@@ -3,10 +3,28 @@ package model;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.geom.Rectangle2D;
 
 public class GeneradorBloques {
+        private int x,y;
+    int ANCHO = 100, ALTO =30;
     
-    public int mapa[][];
+    public GeneradorBloques(int x, int y){
+        this.x=x;
+        this.y=y;
+    
+}
+   public Rectangle2D getBloque() {
+        return new Rectangle2D.Double(x, y, ANCHO, ALTO);
+}
+   public void setTamaño(){
+       x=0;
+       y=0;
+       ANCHO=0;
+       ALTO=0;
+   }
+    
+   /* public int mapa[][];
     public int anchoBloque;
     public int altoBloque;
     public GeneradorBloques(int fila, int col){
@@ -35,5 +53,7 @@ public class GeneradorBloques {
 //darle valor a los bloques para la posible colision
    public void setValorBloque(int valor, int fila, int col){
  mapa[fila][col]= valor;   
-}    
+}    */
+
 }
+
