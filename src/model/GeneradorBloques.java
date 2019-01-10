@@ -33,7 +33,7 @@ public class GeneradorBloques {
         }
     }
 //darle valor a los bloques para la posible colision
-    /*public void setValorBloque(int valor, int fila, int col){
+   public void setValorBloque(int valor, int fila, int col){
  mapa[fila][col]= valor;   
-}*/    
+}    
 }

@@ -16,7 +16,7 @@ public class LaminaPelota extends JPanel
 {
       Pelota pelota = new Pelota();
       Barra ba= new Barra(5,750);
-      private int bloquesTotal = 21;
+      //private int bloquesTotal = 21;
       private GeneradorBloques mapa;
 private ArrayList<Pelota> pelotas=new ArrayList<Pelota>();
 //Añadimos pelota a la lámina
@@ -47,7 +47,8 @@ public void dibujar(Graphics2D g) {
  return pelota.getPelota().intersects(r);
  }
 //este metodo se llama automaticamente cuando se lo necesita para dibujar pelota y barra
-public void paintComponent(Graphics g) 
+      @Override 
+      public void paintComponent(Graphics g) 
 {
 super.paintComponent(g);
 g.setColor(new Color( 245, 245, 220 ));
