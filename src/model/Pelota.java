@@ -55,7 +55,7 @@ y=dy+y;
 
 if(colisionBarra){
 dy=-dy;
-y=625;
+y=730;
 }
 if(x+TAMX>=limites.getMaxX())
 {
@@ -89,11 +89,11 @@ public Ellipse2D getShape()
     }
    public void pintar_bola(Graphics g)
     {
-g.setColor(color);
+    g.setColor(color);
 
-Graphics2D g2=(Graphics2D) g;
-g2.fill(new Ellipse2D.Double(x,y,TAMX,TAMY));
-mueve_pelota(limites, true);
+    Graphics2D g2=(Graphics2D) g;
+    g2.fill(new Ellipse2D.Double(x,y,TAMX,TAMY));
+    mueve_pelota(limites, true);
     }
     public double getX()
     {  
