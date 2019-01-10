@@ -22,5 +22,10 @@ public class Jugador extends Observable {
     public Jugador(String Nombre) {
         this.Nombre = Nombre;
     }
+
+    @Override
+    public String toString() {
+        return "Jugador{" + "Nombre=" + Nombre + ", Puntaje=" + Puntaje + '}';
+    }
     
 }
