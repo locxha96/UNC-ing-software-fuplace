@@ -15,7 +15,7 @@ public class LaminaPelota extends JPanel
 {
       Pelota pelota = new Pelota();
 
-    Barra ba= new Barra(5,650);
+    Barra ba= new Barra(5,750);
 private ArrayList<Pelota> pelotas=new ArrayList<Pelota>();
 //Añadimos pelota a la lámina
 public void add(Pelota b)
@@ -51,7 +51,7 @@ super.paintComponent(g);
 g.setColor(new Color( 245, 245, 220 ));
 g.fillRect(0,0,getWidth(),getHeight());
 Graphics2D g2 = (Graphics2D) g; //lo convierto
-g2.setColor(Color.WHITE);
+g2.setColor(Color.BLACK);
 dibujar(g2);
 actualizar();//ACA SE PODRIA USAR OBSERVER PARA la barra y buscar EL METODO Q MUEVE actu la pelota!!!
 
