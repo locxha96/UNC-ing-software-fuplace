@@ -8,14 +8,16 @@ import java.util.ArrayList;
 import javax.swing.JPanel;
 import java.awt.geom.Rectangle2D;
 import model.Barra;
+import model.GeneradorBloques;
 import model.Pelota;
 
 
 public class LaminaPelota extends JPanel
 {
       Pelota pelota = new Pelota();
-
-    Barra ba= new Barra(5,750);
+      Barra ba= new Barra(5,750);
+      private int bloquesTotal = 21;
+      private GeneradorBloques mapa;
 private ArrayList<Pelota> pelotas=new ArrayList<Pelota>();
 //Añadimos pelota a la lámina
 public void add(Pelota b)
@@ -53,6 +55,8 @@ g.fillRect(0,0,getWidth(),getHeight());
 Graphics2D g2 = (Graphics2D) g; //lo convierto
 g2.setColor(Color.BLACK);
 dibujar(g2);
+mapa = new GeneradorBloques(3, 7);
+mapa.dibujar((Graphics2D) g);
 actualizar();//ACA SE PODRIA USAR OBSERVER PARA la barra y buscar EL METODO Q MUEVE actu la pelota!!!
 
 try

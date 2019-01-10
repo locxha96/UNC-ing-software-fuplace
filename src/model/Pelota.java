@@ -6,6 +6,7 @@ import java.awt.Color;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+//import java.awt.Rectangle;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
 
@@ -21,6 +22,7 @@ private double dx=1;// desplazamiento en x (velocidad)
 private double dy=1;// desplazamiento en y (velocidad)
 Color color=Color.GREEN;
 Rectangle2D limites;
+//private GeneradorBloques mapa; 
 
 
 public Pelota(Color color)
@@ -77,7 +79,23 @@ if(y<limites.getMinY())
 y=limites.getMinY();
 dy=-dy;
 }
-}
+          // Posible colision
+/*for(int i = 0; i<mapa.mapa.length; i++){
+    for(int j = 0; j<mapa.mapa[0].length; j++){
+        if(mapa.mapa[i][j] > 0){
+           int bloqueX = j*mapa.anchoBloque+25;
+           int bloqueY = i*mapa.altoBloque+25;
+           int anchoBloque = mapa.anchoBloque;
+           int altoBloque = mapa.altoBloque;
+           
+           Rectangle rect = new Rectangle(bloqueX, bloqueY, anchoBloque, altoBloque);
+           Rectangle rectPelota = new Rectangle(x, y, 20, 20);
+                   
+         }
+         }
+        }*/
+    }
+
 //Forma de la pelota en su posición inicial
 public Ellipse2D getShape()
 {
