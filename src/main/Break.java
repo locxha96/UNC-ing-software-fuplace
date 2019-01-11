@@ -13,7 +13,7 @@ import view.Principal;
 public class Break {
 public static void main(String[] args) 
 {
-  InicializaDB.init(); // porque init()es un metodo static, osea es de la clase entonces se lo aplico a la clase
+  Principal.init(); // porque init()es un metodo static, osea es de la clase entonces se lo aplico a la clase
         
         List<Jugador> jugadores=JugadorDAO.getInstancia().getAll();
         //Mostramos todos los alumnos

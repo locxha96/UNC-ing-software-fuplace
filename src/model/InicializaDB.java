@@ -1,7 +1,7 @@
 
 package model;
 
-
+// BORRAR ESTA CLASE
 public class InicializaDB {
     public static void init(){
         JugadorDAO dao=JugadorDAO.getInstancia();

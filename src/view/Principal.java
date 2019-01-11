@@ -6,13 +6,16 @@
 package view;
 
 import javax.swing.JFrame;
+import model.Jugador;
+import model.JugadorDAO;
 
 /**
  *
  * @author Cristian Velazquez
  */
 public class Principal extends javax.swing.JFrame {
-
+Jugador jugadores;
+static String nombre;
     /**
      * Creates new form Principal
      */
@@ -28,6 +31,8 @@ public class Principal extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
+        txtnombre = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -40,17 +45,32 @@ public class Principal extends javax.swing.JFrame {
 
         jLabel1.setText("Dificultad");
 
+        txtnombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtnombreActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("Ingrese su nombre:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton1)
-                    .addComponent(jLabel1))
-                .addGap(67, 67, 67)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton1)
+                            .addComponent(jLabel1))
+                        .addGap(67, 67, 67)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtnombre)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(87, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -60,7 +80,11 @@ public class Principal extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 137, Short.MAX_VALUE)
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(71, 71, 71))
         );
@@ -72,7 +96,15 @@ public class Principal extends javax.swing.JFrame {
         JFrame marco=new MarcoRebote();
         marco.setVisible(true);
         this.dispose(); //oculto la ventana
+        
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void txtnombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnombreActionPerformed
+       nombre = txtnombre.getText();
+       jugadores= new Jugador(nombre);
+        
+       
+    }//GEN-LAST:event_txtnombreActionPerformed
 
     /**
      * @param args the command line arguments
@@ -108,10 +140,20 @@ public class Principal extends javax.swing.JFrame {
             }
         });
     }
-
+   
+public static void init(){
+        JugadorDAO dao=JugadorDAO.getInstancia();
+        
+        dao.add(new Jugador(nombre));
+      
+ 
+        
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField txtnombre;
     // End of variables declaration//GEN-END:variables
 }
