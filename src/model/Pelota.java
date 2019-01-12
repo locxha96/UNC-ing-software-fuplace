@@ -45,8 +45,8 @@ y=(int)(Math.random()*200);
 }*/
 public Pelota()
 {   
-x=3000;
-y=4000;
+x=900;
+y=400;
 }
     public Rectangle2D getPelota() {
         return new Rectangle2D.Double(x, y, TAMX, TAMY);
@@ -66,22 +66,25 @@ if(colisionBlock){
 dy=-dy;
 y=200;
 borrarBlock();
-}
+}//extremno derecho
 if(x+TAMX>=limites.getMaxX())
 {
 x=limites.getMaxX() - TAMX;
 dx=-dx;
-}
+System.out.println("hello");
+}//parte inferior
 if(y + TAMY>=limites.getMaxY())
 {
 y=limites.getMaxY()-TAMY;
 dy=-dy;
-}
+System.out.println("mami");
+}//extremo izquierdo
 if(x<limites.getMinX())
 {
 x=limites.getMinX();
 dx=-dx;
-}
+System.out.println("genial");
+}//parte superior
 if(y<limites.getMinY())
 {
 y=limites.getMinY();
