@@ -5,32 +5,59 @@
  */
 package view;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import model.Jugador;
 import model.JugadorDAO;
+import model.ObservadorGrafico;
 
 /**
  *
  * @author Cristian Velazquez
  */
 public class Principal extends javax.swing.JFrame {
-Jugador jugadores;
+
 static String nombre;
+static int lvl;
     /**
      * Creates new form Principal
      */
     public Principal() {
         initComponents();
     }
+  private boolean datosValido() {
+        Pattern p = Pattern.compile("^\\d+$");
+        Matcher m = p.matcher(txtd.getText());
+       if(Integer.parseInt(txtd.getText())>4 && Integer.parseInt(txtd.getText())<0  ){
+           return false;
+       }
+        if (!m.find()) {
+            return false;
+        }
 
+        return true;
+    }
+   private boolean datosValidos() {
+        Pattern p = Pattern.compile("^\\d+$");
+        Matcher m = p.matcher(txtnombre.getText());
+
+        if (!m.find()) {
+            return true;
+        }
+
+        return false;
+    }
    
     @SuppressWarnings("unchecked")
+    
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtd = new javax.swing.JTextField();
         txtnombre = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
 
@@ -44,6 +71,12 @@ static String nombre;
         });
 
         jLabel1.setText("Dificultad");
+
+        txtd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtdActionPerformed(evt);
+            }
+        });
 
         txtnombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -67,7 +100,7 @@ static String nombre;
                         .addGap(67, 67, 67)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtnombre)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)))
+                            .addComponent(txtd, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -79,7 +112,7 @@ static String nombre;
                 .addGap(45, 45, 45)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -93,6 +126,13 @@ static String nombre;
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        if (!datosValidos()) {
+            JOptionPane.showMessageDialog(this, "Datos no validos!");
+            return; }
+        if (!datosValido()) {
+            JOptionPane.showMessageDialog(this, "Datos no validos!");
+            return;
+        }
         JFrame marco=new MarcoRebote();
         marco.setVisible(true);
         this.dispose(); //oculto la ventana
@@ -101,10 +141,12 @@ static String nombre;
 
     private void txtnombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnombreActionPerformed
        nombre = txtnombre.getText();
-       jugadores= new Jugador(nombre);
         
-       
     }//GEN-LAST:event_txtnombreActionPerformed
+
+    private void txtdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtdActionPerformed
+        lvl = Integer.parseInt(txtd.getText());
+    }//GEN-LAST:event_txtdActionPerformed
 
     /**
      * @param args the command line arguments
@@ -133,6 +175,7 @@ static String nombre;
         }
         //</editor-fold>
 
+
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -153,7 +196,7 @@ public static void init(){
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField txtd;
     private javax.swing.JTextField txtnombre;
     // End of variables declaration//GEN-END:variables
 }

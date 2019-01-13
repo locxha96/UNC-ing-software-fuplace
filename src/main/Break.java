@@ -20,16 +20,12 @@ public static void main(String[] args)
         for (Jugador a: jugadores) {
             System.out.println(a);
             }
-        
-Jugador j= new Jugador("Pedro");
-ObservadorGrafico o= new ObservadorGrafico();
-j.addObserver(o);
+
 
 Principal v = new Principal();
 v.setLocationRelativeTo(null);
 v.setVisible(true);
-j.setVidas(0);
-j.notifyObservers();
+
 
 }
 }

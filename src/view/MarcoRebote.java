@@ -1,6 +1,5 @@
 package view;
 
-
 import java.awt.BorderLayout;
 import java.awt.Color;
 import javax.swing.JFrame;
@@ -9,31 +8,40 @@ import controller.ControllerInterface;
 import controller.NivelFacil;
 import controller.NivelMedio;
 import controller.NivelDificil;
-
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import static model.Jugador.getPuntaje;
 
 import model.Pelota;
 import model.Teclado;
 
 public class MarcoRebote extends JFrame {
-int score=0;
+
+    int score = 0;
     private LaminaPelota lamina;
     private HiloPelota hilo;
-   // JTextField ventana = new JTextField(2);
+   JLabel life = new JLabel("Vidas", JLabel.CENTER);
+   JLabel ventana=new JLabel(getPuntaje(), JLabel.CENTER);
 
+  
+    
     public MarcoRebote() {
         setBounds(800, 200, 600, 800);
         setTitle("Break Bricks");
         addKeyListener(new Teclado());//creo una clase teclado 
         lamina = new LaminaPelota();
         this.add(lamina, BorderLayout.CENTER);
-        hilo= new HiloPelota(lamina);
+        lamina.add(life);
+        lamina.add(ventana); //agreto el Text field
+        hilo = new HiloPelota(lamina, ventana);
       
-     //   Controller = new NivelFacil();
-    //   Pelota pelota=new Pelota(new Color(Controller.getr(),Controller.getg(),Controller.getb()),Controller.getRadio());
+
+        //   Controller = new NivelFacil();
+        //   Pelota pelota=new Pelota(new Color(Controller.getr(),Controller.getg(),Controller.getb()),Controller.getRadio());
+  
     }
 
-  //private ControllerInterface Controller;
-
+    //private ControllerInterface Controller;
 //VER COMO SE SELECIONA EL NIVEL, LUGEO CAMBIAR ESTO !!!!
 /*
 public void comienza_el_juego ()

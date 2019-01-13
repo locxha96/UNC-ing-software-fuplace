@@ -12,6 +12,7 @@ import java.awt.geom.Rectangle2D;
 public class Pelota
 {
   boolean borrar=false;
+  boolean restaVidas=false;
 private float TAMX=15;//eje x elipse (en el circulo si son 
 
 private float masa;
@@ -71,55 +72,39 @@ if(x+TAMX>=limites.getMaxX())
 {
 x=limites.getMaxX() - TAMX;
 dx=-dx;
-System.out.println("hello");
 }//parte inferior
 if(y + TAMY>=limites.getMaxY())
 {
 y=limites.getMaxY()-TAMY;
 dy=-dy;
-System.out.println("mami");
+restaVidas=true;
 }//extremo izquierdo
 if(x<limites.getMinX())
 {
 x=limites.getMinX();
 dx=-dx;
-System.out.println("genial");
 }//parte superior
 if(y<limites.getMinY())
 {
 y=limites.getMinY();
 dy=-dy;
 }
-          // Posible colision con bloques
-       /*   A:  for(int i = 0; i<mapa.mapa.length; i++){
-            for(int j = 0; j<mapa.mapa[0].length; j++){
-                if(mapa.mapa[i][j] > 0){
-                int bloqueX = j*mapa.anchoBloque+25;
-                int bloqueY = i*mapa.altoBloque+25;
-                int anchoBloque = mapa.anchoBloque;
-                int altoBloque = mapa.altoBloque;
-           
-                Rectangle rect = new Rectangle(bloqueX, bloqueY, anchoBloque, altoBloque);
-                if(getPelota().intersects(rect)){
-                mapa.setValorBloque(0, i, j);
-                bloquesTotal--;
-                if(x + 19> rect.x || x+1 < rect.x + rect.width){
-                    dx=-dx;
-                }else{
-                    dy=-dy;
-                }
-                }
-            break A;         
-         }
-         }
-        }*/
     }
 public void borrarBlock(){
     borrar=true;
     
 }
+public boolean getPierde(){
+    return restaVidas;
+}
+public void setRestaVidas(){
+    restaVidas=false;
+}
 public boolean getValor(){
     return borrar;
+}
+public void setValor(){
+    borrar=false;
 }
 //Forma de la pelota en su posición inicial
 public Ellipse2D getShape()

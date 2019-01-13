@@ -1,5 +1,8 @@
 package view;
 
+import controller.ControllerInterface;
+import controller.NivelDificil;
+import controller.NivelFacil;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -8,25 +11,36 @@ import javax.swing.JPanel;
 import java.awt.geom.Rectangle2D;
 import model.Barra;
 import model.GeneradorBloques;
+import model.Jugador;
+import model.OberservadorDeConsola;
+import model.ObservadorGrafico;
 import model.Pelota;
+import static view.Principal.nombre;
 
 public class LaminaPelota extends JPanel {
 
+    ControllerInterface controller;
+    static Jugador jugadores;
     Pelota pelota = new Pelota();
-    Barra ba = new Barra(5, 750);
-   private ArrayList<GeneradorBloques> bloques = new ArrayList<GeneradorBloques>(); 
-   
+    Barra ba;
+    private ArrayList<GeneradorBloques> bloques = new ArrayList<GeneradorBloques>();// BORRO ????, usar sin una coleccion?
+
 //    GeneradorBloques block= new GeneradorBloques(400,100);
-    
-    
-   // private GeneradorBloques mapa;
+    // private GeneradorBloques mapa;
     private ArrayList<Pelota> pelotas = new ArrayList<Pelota>();
 //Añadimos pelota a la lámina
 
-     public LaminaPelota(){
-       bloques.add(new GeneradorBloques(400,100));
-   }
-     
+    public LaminaPelota() {
+        controller = new NivelDificil();
+        ba = new Barra(5, 750);
+        bloques.add(new GeneradorBloques(controller.getx(), controller.gety(),controller.getAnchoBloque(),controller.getAltoBloque()));
+        jugadores = new Jugador(nombre);
+        ObservadorGrafico o = new ObservadorGrafico();
+        OberservadorDeConsola a= new OberservadorDeConsola();
+        jugadores.addObserver(o);
+        jugadores.addObserver(a);
+    }
+
     public void add(Pelota b) {
         pelotas.add(b);
     }
@@ -50,11 +64,19 @@ public class LaminaPelota extends JPanel {
 
     public void actualizar() { //para mover la barra en la laminaa
         ba.MoverBarra(getBounds());
-        pelota.mueve_pelota(getBounds(), colision(ba.getBarra()),colision(bloques.get(0).getBloque()));
-       if(pelota.getValor()==true){
-           bloques.get(0).setTamaño();
-       
-       }
+        pelota.mueve_pelota(getBounds(), colision(ba.getBarra()), colision(bloques.get(0).getBloque()));
+        if (pelota.getValor() == true) {
+            pelota.setValor();
+            bloques.get(0).setTamaño();
+            jugadores.setPuntaje();
+            System.out.println(jugadores.getPuntaje());
+        }
+        if (pelota.getPierde() == true) {
+            jugadores.setVidas();
+            pelota.setRestaVidas();
+            jugadores.notifyObservers();
+        }
+
     }
 
     private boolean colision(Rectangle2D r) {
@@ -70,8 +92,7 @@ public class LaminaPelota extends JPanel {
         Graphics2D g2 = (Graphics2D) g; //lo convierto
         g2.setColor(Color.BLACK);
         dibujar(g2);
-       /* mapa = new GeneradorBloques(3, 7);
-        mapa.dibujar((Graphics2D) g);*/
+       
         actualizar();//ACA SE PODRIA USAR OBSERVER PARA la barra y buscar EL METODO Q MUEVE actu la pelota!!!
 
         try {

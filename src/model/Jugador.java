@@ -5,27 +5,35 @@ import java.util.Observable;
 
 
 public class Jugador extends Observable {
-    private String Nombre;
-    private int Puntaje;
-    private int Vidas;
+    private String nombre;
+    private static int puntaje=0;
+    private int vidas=2;
 
     public void setPuntaje(int Puntaje) {
-        this.Puntaje = Puntaje;
+        this.puntaje = puntaje;
     }
 
-    public void setVidas(int Vidas) {
-        this.Vidas = Vidas;
-        if(Vidas==0){//llama solo si perdio
-        setChanged();}
+    public void setVidas() {
+        vidas=vidas-1;
+        if(vidas==0){//llama solo si perdio
+        setChanged();
+        }
     }
 
     public Jugador(String Nombre) {
-        this.Nombre = Nombre;
+        this.nombre = Nombre;
     }
-
+public void setPuntaje() {
+    puntaje=puntaje+10;
+    setChanged();
+}
     @Override
     public String toString() {
-        return "Jugador{" + "Nombre=" + Nombre + ", Puntaje=" + Puntaje + '}';
+        return "Jugador{" + "Nombre=" + nombre + ", Puntaje=" + puntaje + '}';
+        
+    }
+    public static String getPuntaje(){
+        return "Tu puntaje espuntaje: " + puntaje;
     }
     
 }

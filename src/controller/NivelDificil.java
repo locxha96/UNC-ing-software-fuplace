@@ -2,38 +2,54 @@ package controller;
 
 import java.util.Random;
 
-public class NivelDificil implements ControllerInterface {
+public class NivelDificil extends NIVEL implements ControllerInterface {
 
-    public int r;
-    public int g;
-    public int b;
-    public int rr = 10;
 
     public NivelDificil() {
-        Random rand = new Random();
-        r = rand.nextInt(255);
-        g = rand.nextInt(255);
-        b = rand.nextInt(255);
-    }
-
-    @Override
-    public int getr() {
-        return r;
-    }
-
-    @Override
-    public int getg() {
-        return g;
-    }
-
-    @Override
-    public int getb() {
-        return b;
-    }
-
-    @Override
+x=400;
+y=100;
+anchoBloque=100;
+altoBloque=30;
+anchoBarra =80;
+altoBarra=10;
+}
+     @Override
     public int getRadio() {
-        return rr;
+       return rr;
     }
+
+    @Override
+    public int getx() {
+        return x;
+    }
+
+    @Override
+    public int gety() {
+        return y;
+    }
+
+    @Override
+    public int getAnchoBarra() {
+        return anchoBarra;
+    }
+
+    @Override
+    public int getAltoBarra() {
+        return altoBarra;
+    }
+
+    @Override
+    public int getAnchoBloque() {
+       return anchoBloque;
+    }
+
+    @Override
+    public int getAltoBloque() {
+       return altoBloque;
+    }
+
+   
+
+  
 
 }

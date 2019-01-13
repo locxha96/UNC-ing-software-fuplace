@@ -5,13 +5,12 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.geom.Rectangle2D;
 
-public class GeneradorBloques {
+public class GeneradorBloques extends Figura{
         private int x,y;
     int ANCHO = 100, ALTO =30;
     
-    public GeneradorBloques(int x, int y){
-        this.x=x;
-        this.y=y;
+    public GeneradorBloques(int x, int y, int ANCHO,int ALTO){
+        super(x,y,ANCHO, ALTO);
     
 }
    public Rectangle2D getBloque() {
