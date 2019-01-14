@@ -4,57 +4,54 @@ package controller;
 import java.util.Random;
 
 
-public class NivelMedio implements ControllerInterface {
-    
-  public int r;
-    public int g;
-    public int b;
-    public int rr = 25;
-
-    public NivelMedio() {
-        Random rand = new Random();
-        r = rand.nextInt(255);
-        g = rand.nextInt(255);
-        b = rand.nextInt(255);
-    }
-
-   
-
-    @Override
+public class NivelMedio extends NIVEL implements ControllerInterface {
+ 
+public NivelMedio() {
+x=250;
+y=100;
+anchoBloque=80;
+altoBloque=30;
+anchoBarra =80;
+altoBarra=10;
+}
+     @Override
     public int getRadio() {
-        return rr;
+       return radioPelota;
     }
 
     @Override
     public int getx() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return x;
     }
 
     @Override
     public int gety() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return y;
     }
 
     @Override
     public int getAnchoBarra() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return anchoBarra;
     }
 
     @Override
     public int getAltoBarra() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return altoBarra;
     }
 
     @Override
     public int getAnchoBloque() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       return anchoBloque;
     }
 
     @Override
     public int getAltoBloque() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       return altoBloque;
     }
 
+   
 
+  
 
 }
+

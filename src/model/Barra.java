@@ -5,24 +5,22 @@ import java.awt.Rectangle;
 import java.awt.geom.Rectangle2D;
 
 
-public class Barra{
-    private int x,y;
-   static final int ANCHO = 80, ALTO = 10;
+public class Barra extends Figura{
+
     
-    public Barra(int x, int y){
-        this.x=x;
-        this.y=y;
+    public Barra(int x, int y, int ANCHO, int ALTO) {
+        super(x, y, ANCHO, ALTO);
     
 }
    public Rectangle2D getBarra() {
-        return new Rectangle2D.Double(x, y, ANCHO, ALTO);
+        return new Rectangle2D.Double(getX(), getY(), getAncho(), getAlto());
 } //desplazamineto de la barra horizontal
    public void MoverBarra (Rectangle limites) {
-        if (Teclado.a && x > limites.getMinX()) {
-            x--;
+        if (Teclado.a && getX() > limites.getMinX()) {
+            setX(getX()-1);
         }
-        if (Teclado.d && x < limites.getMaxX()-ANCHO) {
-            x++;
+        if (Teclado.d && getX() < limites.getMaxX()-getAncho()) {
+            setX(getX()+1);;
         }
         
     }

@@ -16,7 +16,7 @@ public class Jugador extends Observable {
     public void setVidas() {
         vidas=vidas-1;
         if(vidas==0){//llama solo si perdio
-        setChanged();
+       // setChanged();
         }
     }
 
@@ -25,7 +25,7 @@ public class Jugador extends Observable {
     }
 public void setPuntaje() {
     puntaje=puntaje+10;
-    setChanged();
+    //setChanged();
 }
     @Override
     public String toString() {

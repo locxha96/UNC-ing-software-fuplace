@@ -3,6 +3,7 @@ package view;
 import controller.ControllerInterface;
 import controller.NivelDificil;
 import controller.NivelFacil;
+import controller.NivelMedio;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -15,6 +16,7 @@ import model.Jugador;
 import model.OberservadorDeConsola;
 import model.ObservadorGrafico;
 import model.Pelota;
+import static view.Principal.lvl;
 import static view.Principal.nombre;
 
 public class LaminaPelota extends JPanel {
@@ -31,9 +33,9 @@ public class LaminaPelota extends JPanel {
 //Añadimos pelota a la lámina
 
     public LaminaPelota() {
-        controller = new NivelDificil();
-        ba = new Barra(5, 750);
-        bloques.add(new GeneradorBloques(controller.getx(), controller.gety(),controller.getAnchoBloque(),controller.getAltoBloque()));
+       elegirNivel();
+        ba = new Barra(5, 750,controller.getAnchoBarra(),controller.getAltoBarra());
+        bloques.add(new GeneradorBloques(controller.getx(),controller.gety(),controller.getAnchoBloque(),controller.getAltoBloque()));
         jugadores = new Jugador(nombre);
         ObservadorGrafico o = new ObservadorGrafico();
         OberservadorDeConsola a= new OberservadorDeConsola();
@@ -78,7 +80,16 @@ public class LaminaPelota extends JPanel {
         }
 
     }
-
+private void elegirNivel(){
+         if(lvl==1){
+        controller = new NivelFacil();    
+        }
+        if(lvl==2){
+        controller = new NivelMedio();    
+        }
+        if(lvl==3){
+        controller = new NivelDificil();    
+        }}
     private boolean colision(Rectangle2D r) {
         return pelota.getPelota().intersects(r);
     }

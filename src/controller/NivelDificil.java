@@ -1,21 +1,19 @@
 package controller;
 
-import java.util.Random;
-
 public class NivelDificil extends NIVEL implements ControllerInterface {
 
 
     public NivelDificil() {
 x=400;
 y=100;
-anchoBloque=100;
+anchoBloque=20;
 altoBloque=30;
-anchoBarra =80;
+anchoBarra =30;
 altoBarra=10;
 }
      @Override
     public int getRadio() {
-       return rr;
+       return radioPelota;
     }
 
     @Override
