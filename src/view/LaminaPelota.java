@@ -16,6 +16,7 @@ import model.Jugador;
 import model.OberservadorDeConsola;
 import model.ObservadorGrafico;
 import model.Pelota;
+import model.Singleton;
 import static view.Principal.lvl;
 import static view.Principal.nombre;
 
@@ -23,16 +24,15 @@ public class LaminaPelota extends JPanel {
 
     ControllerInterface controller;
     static Jugador jugadores;
-    Pelota pelota = new Pelota();
+    Singleton singleton;
+
     Barra ba;
     private ArrayList<GeneradorBloques> bloques = new ArrayList<GeneradorBloques>();// BORRO ????, usar sin una coleccion?
 
-//    GeneradorBloques block= new GeneradorBloques(400,100);
-    // private GeneradorBloques mapa;
-    private ArrayList<Pelota> pelotas = new ArrayList<Pelota>();
 //Añadimos pelota a la lámina
 
     public LaminaPelota() {
+       singleton  = Singleton.getInstance();
        elegirNivel();
         ba = new Barra(5, 750,controller.getAnchoBarra(),controller.getAltoBarra());
         bloques.add(new GeneradorBloques(controller.getx(),controller.gety(),controller.getAnchoBloque(),controller.getAltoBloque()));
@@ -43,39 +43,24 @@ public class LaminaPelota extends JPanel {
         jugadores.addObserver(a);
     }
 
-    public void add(Pelota b) {
-        pelotas.add(b);
-    }
-//borrar esto
-
-    public void eliminar() {
-        if (!pelotas.isEmpty()) {
-            pelotas.remove(pelotas.size() - 1);
-        }
-    }
-
-    public int contar() {
-        return (pelotas.size());
-    }
-
     public void dibujar(Graphics2D g) {
-        g.fill(pelota.getShape());
+        g.fill(singleton.getPelota().getShape());
         g.fill(ba.getBarra());
         g.fill(bloques.get(0).getBloque());
     }
 
     public void actualizar() { //para mover la barra en la laminaa
         ba.MoverBarra(getBounds());
-        pelota.mueve_pelota(getBounds(), colision(ba.getBarra()), colision(bloques.get(0).getBloque()));
-        if (pelota.getValor() == true) {
-            pelota.setValor();
+       singleton.getPelota().mueve_pelota(getBounds(), colision(ba.getBarra()), colision(bloques.get(0).getBloque()));
+        if (singleton.getPelota().getValor() == true) {
+            singleton.getPelota().setValor();
             bloques.get(0).setTamaño();
             jugadores.setPuntaje();
             System.out.println(jugadores.getPuntaje());
         }
-        if (pelota.getPierde() == true) {
+        if (singleton.getPelota().getPierde() == true) {
             jugadores.setVidas();
-            pelota.setRestaVidas();
+            singleton.getPelota().setRestaVidas();
             jugadores.notifyObservers();
         }
 
@@ -91,7 +76,7 @@ private void elegirNivel(){
         controller = new NivelDificil();    
         }}
     private boolean colision(Rectangle2D r) {
-        return pelota.getPelota().intersects(r);
+        return singleton.getPelota().getPelota().intersects(r);
     }
 
 //este metodo se llama automaticamente cuando se lo necesita para dibujar pelota y barra
@@ -105,8 +90,8 @@ private void elegirNivel(){
         dibujar(g2);
        
         actualizar();//ACA SE PODRIA USAR OBSERVER PARA la barra y buscar EL METODO Q MUEVE actu la pelota!!!
-
-        try {
+//VER LO DE THEREAD PARA CAMBIAR LA VELOCIDAD
+/*        try {
             for (int i = 0; i < pelotas.size(); i++) {
                 if (pelotas.size() >= 2) {
                     for (int j = i + 1; j < pelotas.size(); j++) {
@@ -120,7 +105,7 @@ private void elegirNivel(){
         } catch (InterruptedException e) {
 //System.out.println("Error al intentar pintar la 
 //bola"+e);
-        }
+        }*/
         repaint();
     }
 }

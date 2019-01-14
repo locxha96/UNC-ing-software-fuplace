@@ -16,6 +16,7 @@ public HiloPelota(LaminaPelota lamina, JLabel v)
 
      this.lamina=lamina;
     this.v=v;
+    
     }
 public void run()
     {

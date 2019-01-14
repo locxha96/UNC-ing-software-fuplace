@@ -26,13 +26,6 @@ Rectangle2D limites;
 private GeneradorBloques mapa;
 private int bloquesTotal = 21;
 
-
-public Pelota(Color color)
-{
-this.color=color;
-x=(int)(Math.random()*200);
-y=(int)(Math.random()*200);
-}
 // Lo podemos usar para la seleccion de nivel, pero no es necesario darle un color, solo el diametro para el nivel
 /* 
 public Pelota(Color color,int diametro)
