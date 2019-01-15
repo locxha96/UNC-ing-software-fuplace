@@ -49,8 +49,10 @@ public class Figura {
 
     public Rectangle2D getBloque() {
         return new Rectangle2D.Double(getX(), getY(), getAncho(), getAlto());
-    } 
+    }
 
- 
+    public Rectangle2D getBarra() {
+        return new Rectangle2D.Double(getX(), getY(), getAncho(), getAlto());
+    }
 
 }

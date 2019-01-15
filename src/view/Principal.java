@@ -9,10 +9,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import model.Jugador;
 import model.JugadorDAO;
-import model.ObservadorGrafico;
 
 /**
  *
@@ -28,7 +26,7 @@ static int lvl;
     public Principal() {
         initComponents();
     }
-  private boolean datosValido() {
+ public boolean datosValidos2() {
         Pattern p = Pattern.compile("^\\d+$");
         Matcher m = p.matcher(txtd.getText());
     
@@ -38,7 +36,7 @@ static int lvl;
 
         return true;
     }
-   private boolean datosValidos() {
+   public boolean datosValidos() {
         Pattern p = Pattern.compile("^\\d+$");
         Matcher m = p.matcher(txtnombre.getText());
 
@@ -156,7 +154,7 @@ static int lvl;
         if (!datosValidos()) {
             JOptionPane.showMessageDialog(this, "Datos no validos!");
             return; }
-        if (!datosValido()) {
+        if (!datosValidos2()) {
             JOptionPane.showMessageDialog(this, "Datos no validos!");
             return;
         }

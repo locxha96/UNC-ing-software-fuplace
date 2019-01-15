@@ -10,4 +10,5 @@ public interface ControllerInterface {
    int getAltoBarra();
    int getAnchoBloque();
    int getAltoBloque();
+   int getCantidad();
 }

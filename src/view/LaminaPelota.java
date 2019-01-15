@@ -10,12 +10,13 @@ import java.awt.Graphics2D;
 import java.util.ArrayList;
 import javax.swing.JPanel;
 import java.awt.geom.Rectangle2D;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import model.Barra;
 import model.GeneradorBloques;
 import model.Jugador;
 import model.OberservadorDeConsola;
 import model.ObservadorGrafico;
-import model.Pelota;
 import model.Singleton;
 import static view.Principal.lvl;
 import static view.Principal.nombre;
@@ -30,17 +31,20 @@ public class LaminaPelota extends JPanel {
     private ArrayList<GeneradorBloques> bloques = new ArrayList<GeneradorBloques>();// BORRO ????, usar sin una coleccion?
 
 //Añadimos pelota a la lámina
-
     public LaminaPelota() {
-       singleton  = Singleton.getInstance();
-       elegirNivel();
-        ba = new Barra(5, 750,controller.getAnchoBarra(),controller.getAltoBarra());
-        bloques.add(new GeneradorBloques(controller.getx(),controller.gety(),controller.getAnchoBloque(),controller.getAltoBloque()));
+        CrearSingleton();
+        elegirNivel(lvl);
+        ba = new Barra(5, 750, controller.getAnchoBarra(), controller.getAltoBarra());
+        bloques.add(new GeneradorBloques(controller.getx(), controller.gety(), controller.getAnchoBloque(), controller.getAltoBloque(),controller.getCantidad()));
         jugadores = new Jugador(nombre);
         ObservadorGrafico o = new ObservadorGrafico();
-        OberservadorDeConsola a= new OberservadorDeConsola();
+        OberservadorDeConsola a = new OberservadorDeConsola();
         jugadores.addObserver(o);
         jugadores.addObserver(a);
+    }
+
+    public void CrearSingleton() {
+        singleton = Singleton.getInstance();
     }
 
     public void dibujar(Graphics2D g) {
@@ -51,10 +55,10 @@ public class LaminaPelota extends JPanel {
 
     public void actualizar() { //para mover la barra en la laminaa
         ba.MoverBarra(getBounds());
-       singleton.getPelota().mueve_pelota(getBounds(), colision(ba.getBarra()), colision(bloques.get(0).getBloque()));
+        singleton.getPelota().mueve_pelota(getBounds(), colision(ba.getBarra()), colision(bloques.get(0).getBloque()));
         if (singleton.getPelota().getValor() == true) {
             singleton.getPelota().setValor();
-            bloques.get(0).setTamaño();
+            bloques.get(0).hitBlock();
             jugadores.setPuntaje();
             System.out.println(jugadores.getPuntaje());
         }
@@ -65,16 +69,23 @@ public class LaminaPelota extends JPanel {
         }
 
     }
-private void elegirNivel(){
-         if(lvl==1){
-        controller = new NivelFacil();    
+
+    public void elegirNivel(int lvl) {
+        if (lvl == 1) {
+            controller = new NivelFacil();
         }
-        if(lvl==2){
-        controller = new NivelMedio();    
+        if (lvl == 2) {
+            controller = new NivelMedio();
         }
-        if(lvl==3){
-        controller = new NivelDificil();    
-        }}
+        if (lvl == 3) {
+            controller = new NivelDificil();
+        }
+    }
+
+    public ControllerInterface getController() {
+        return controller;
+    }
+
     private boolean colision(Rectangle2D r) {
         return singleton.getPelota().getPelota().intersects(r);
     }
@@ -88,24 +99,13 @@ private void elegirNivel(){
         Graphics2D g2 = (Graphics2D) g; //lo convierto
         g2.setColor(Color.BLACK);
         dibujar(g2);
-       
+
         actualizar();//ACA SE PODRIA USAR OBSERVER PARA la barra y buscar EL METODO Q MUEVE actu la pelota!!!
-//VER LO DE THEREAD PARA CAMBIAR LA VELOCIDAD
-/*        try {
-            for (int i = 0; i < pelotas.size(); i++) {
-                if (pelotas.size() >= 2) {
-                    for (int j = i + 1; j < pelotas.size(); j++) {
-                        pelotas.get(i).pintar_bola(g);
-                    }
-                } else {
-                    pelotas.get(i).pintar_bola(g);
-                }
-            }
-            Thread.sleep(3);//velocidad
-        } catch (InterruptedException e) {
-//System.out.println("Error al intentar pintar la 
-//bola"+e);
-        }*/
+        try {
+            Thread.sleep(5);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(LaminaPelota.class.getName()).log(Level.SEVERE, null, ex);
+        }
         repaint();
     }
 }

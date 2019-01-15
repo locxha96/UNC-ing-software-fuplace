@@ -1,22 +1,20 @@
-
 package controller;
 
-import java.util.Random;
-
-
 public class NivelMedio extends NIVEL implements ControllerInterface {
- 
-public NivelMedio() {
-x=250;
-y=100;
-anchoBloque=80;
-altoBloque=30;
-anchoBarra =80;
-altoBarra=10;
-}
-     @Override
+
+    public NivelMedio() {
+        x = 250;
+        y = 100;
+        anchoBloque = 80;
+        altoBloque = 30;
+        anchoBarra = 80;
+        altoBarra = 10;
+        cantidad=3;
+    }
+
+    @Override
     public int getRadio() {
-       return radioPelota;
+        return radioPelota;
     }
 
     @Override
@@ -41,17 +39,17 @@ altoBarra=10;
 
     @Override
     public int getAnchoBloque() {
-       return anchoBloque;
+        return anchoBloque;
     }
 
     @Override
     public int getAltoBloque() {
-       return altoBloque;
+        return altoBloque;
     }
 
-   
-
-  
+    @Override
+    public int getCantidad() {
+        return cantidad;
+    }
 
 }
-

@@ -1,12 +1,10 @@
-
 package model;
 
 import java.util.ArrayList;
 
-
-
 public class JugadorDAO {
-     //Instancia unica de la clase.
+    //Instancia unica de la clase.
+
     private static final JugadorDAO instancia = new JugadorDAO();
     private ArrayList<Jugador> jugadores;
 
@@ -28,7 +26,6 @@ public class JugadorDAO {
     public boolean delete(Jugador a) {
         return jugadores.remove(a);
     }
-
 
     public ArrayList<Jugador> getAll() {
         return jugadores;

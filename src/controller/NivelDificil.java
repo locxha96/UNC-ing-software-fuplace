@@ -2,18 +2,19 @@ package controller;
 
 public class NivelDificil extends NIVEL implements ControllerInterface {
 
-
     public NivelDificil() {
-x=400;
-y=100;
-anchoBloque=20;
-altoBloque=30;
-anchoBarra =30;
-altoBarra=10;
-}
-     @Override
+        x = 400;
+        y = 100;
+        anchoBloque = 20;
+        altoBloque = 30;
+        anchoBarra = 30;
+        altoBarra = 10;
+        cantidad=4;
+    }
+
+    @Override
     public int getRadio() {
-       return radioPelota;
+        return radioPelota;
     }
 
     @Override
@@ -38,16 +39,17 @@ altoBarra=10;
 
     @Override
     public int getAnchoBloque() {
-       return anchoBloque;
+        return anchoBloque;
     }
 
     @Override
     public int getAltoBloque() {
-       return altoBloque;
+        return altoBloque;
     }
 
-   
-
-  
+    @Override
+    public int getCantidad() {
+        return cantidad;
+    }
 
 }
