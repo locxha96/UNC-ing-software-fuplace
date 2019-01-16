@@ -27,6 +27,10 @@ public class Jugador extends Observable {
         puntaje = puntaje + 10;
       //  setChanged();
     }
+    
+    public String getNombre() {
+        return nombre;
+    }
 
     @Override
     public String toString() {

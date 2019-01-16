@@ -24,7 +24,7 @@ import static view.Principal.nombre;
 public class LaminaPelota extends JPanel {
 
     ControllerInterface controller;
-    static Jugador jugadores;
+    public static Jugador jugadores;
     Singleton singleton;
 
     Barra ba;

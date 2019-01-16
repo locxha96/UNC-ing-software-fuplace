@@ -18,8 +18,8 @@ import model.JugadorDAO;
  */
 public class Principal extends javax.swing.JFrame {
 
-static String nombre;
-static int lvl;
+public static String nombre;
+public static int lvl;
     /**
      * Creates new form Principal
      */
