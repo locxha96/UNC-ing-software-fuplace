@@ -7,7 +7,7 @@ public class NivelMedio extends NIVEL implements ControllerInterface {
         y = 100;
         anchoBloque = 80;
         altoBloque = 30;
-        anchoBarra = 80;
+        anchoBarra = 50;
         altoBarra = 10;
         cantidad=3;
     }
