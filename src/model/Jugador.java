@@ -2,7 +2,7 @@ package model;
 
 import java.util.Observable;
 
-public class Jugador extends Observable {
+public class Jugador extends Observable implements Observador {
 
     private String nombre;
     private static int puntaje = 0;
@@ -25,7 +25,6 @@ public class Jugador extends Observable {
 
     public void setPuntaje() {
         puntaje = puntaje + 10;
-      //  setChanged();
     }
     
     public String getNombre() {
@@ -37,9 +36,18 @@ public class Jugador extends Observable {
         return "Jugador{" + "Nombre=" + nombre + ", Puntaje=" + puntaje + '}';
 
     }
-
+   public String getVida(){
+       return "Vidas:" + vidas;
+   }
+           
     public static String getPuntaje() {
-        return "Tu puntaje espuntaje: " + puntaje;
+        return "Tu puntaje es puntaje: " + puntaje;
     }
+
+    @Override
+    public void update() {
+       setVidas();
+    }
+    
 
 }

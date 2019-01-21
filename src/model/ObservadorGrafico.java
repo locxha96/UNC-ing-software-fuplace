@@ -10,7 +10,8 @@ public class ObservadorGrafico implements Observer {
     @Override
     public void update(Observable observable, Object value) {
 
-        JOptionPane.showMessageDialog(null, "Perdiste", getPuntaje(), JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, "Perdiste todas las vidas", getPuntaje(), JOptionPane.INFORMATION_MESSAGE);
+         System.exit(0);
     }
 
 }

@@ -12,11 +12,15 @@ import javax.swing.JPanel;
 import java.awt.geom.Rectangle2D;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JLabel;
 import model.Barra;
 import model.GeneradorBloques;
 import model.Jugador;
+import static model.Jugador.getPuntaje;
 import model.OberservadorDeConsola;
+import model.Observador;
 import model.ObservadorGrafico;
+import model.Pelota;
 import model.Singleton;
 import static view.Principal.lvl;
 import static view.Principal.nombre;
@@ -24,23 +28,29 @@ import static view.Principal.nombre;
 public class LaminaPelota extends JPanel {
 
     ControllerInterface controller;
-    public static Jugador jugadores;
+    public static Jugador jugadores; // LO CREE EN EL ARRAY DEL DAO?? o es uno solo, porque nunca uso a la lista para obtener el jguador
     Singleton singleton;
-
     Barra ba;
-    private ArrayList<GeneradorBloques> bloques = new ArrayList<GeneradorBloques>();// BORRO ????, usar sin una coleccion?
-
+    private GeneradorBloques bloques;
+    JLabel puntaje = new JLabel(getPuntaje(), JLabel.CENTER);
+    JLabel life = new JLabel("Vidas", JLabel.CENTER);
 //Añadimos pelota a la lámina
+
     public LaminaPelota() {
+        add(puntaje);
+        add(life);
         CrearSingleton();
         elegirNivel(lvl);
         ba = new Barra(5, 750, controller.getAnchoBarra(), controller.getAltoBarra());
-        bloques.add(new GeneradorBloques(controller.getx(), controller.gety(), controller.getAnchoBloque(), controller.getAltoBloque(),controller.getCantidad()));
+        bloques = new GeneradorBloques(controller.getx(), controller.gety(), controller.getAnchoBloque(), controller.getAltoBloque(), controller.getCantidad());
         jugadores = new Jugador(nombre);
         ObservadorGrafico o = new ObservadorGrafico();
         OberservadorDeConsola a = new OberservadorDeConsola();
         jugadores.addObserver(o);
         jugadores.addObserver(a);
+
+        
+       //singleton.getPelota().agregarObservadores(bloques); // NO FUNCIONA EL OBSERVER PARA VIDAS*********
     }
 
     public void CrearSingleton() {
@@ -50,15 +60,18 @@ public class LaminaPelota extends JPanel {
     public void dibujar(Graphics2D g) {
         g.fill(singleton.getPelota().getShape());
         g.fill(ba.getBarra());
-        g.fill(bloques.get(0).getBloque());
+        g.fill(bloques.getBloque());
     }
 
     public void actualizar() { //para mover la barra en la laminaa
         ba.MoverBarra(getBounds());
-        singleton.getPelota().mueve_pelota(getBounds(), colision(ba.getBarra()), colision(bloques.get(0).getBloque()));
+        puntaje.setText(getPuntaje());
+        life.setText(jugadores.getVida());
+
+        singleton.getPelota().mueve_pelota(getBounds(), colision(ba.getBarra()), colision(bloques.getBloque()));
         if (singleton.getPelota().getValor() == true) {
             singleton.getPelota().setValor();
-            bloques.get(0).hitBlock();
+            bloques.hitBlock();
             jugadores.setPuntaje();
             System.out.println(jugadores.getPuntaje());
         }

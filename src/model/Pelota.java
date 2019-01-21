@@ -1,12 +1,12 @@
 package model;
 
 import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
+import java.util.ArrayList;
 
-public class Pelota {
+public class Pelota implements SujetoObservable{
+private ArrayList<Observador> observadores;
 
     boolean borrar = false;
     boolean restaVidas = false;
@@ -20,8 +20,8 @@ public class Pelota {
     private double dy = 1;// desplazamiento en y (velocidad)
     Color color = Color.GREEN;
     Rectangle2D limites;
-    private GeneradorBloques mapa;
-    private int bloquesTotal = 21;
+
+
 
 // Lo podemos usar para la seleccion de nivel, pero no es necesario darle un color, solo el diametro para el nivel
 /* 
@@ -106,14 +106,14 @@ y=(int)(Math.random()*200);
     public Color getColor() {
         return color;
     }
-
+/*
     public void pintar_bola(Graphics g) {
         g.setColor(color);
 
         Graphics2D g2 = (Graphics2D) g;
         g2.fill(new Ellipse2D.Double(x, y, TAMX, TAMY));
         mueve_pelota(limites, true, true);
-    }
+    }*/ //Se podria usar
 
     public double getX() {
         return x;
@@ -146,5 +146,17 @@ y=(int)(Math.random()*200);
     public void setDy(double desplazamientoy) {
         dy = desplazamientoy;
     }
+   public void agregarObservadores(Observador o){
+        observadores.add(o);
+    }
+       @Override
+    public void notificar() {
+        for(Observador o: observadores) {
+            o.update();
+        }
+        
+ }
+    
+   
 
 }

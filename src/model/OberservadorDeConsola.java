@@ -10,7 +10,7 @@ public class OberservadorDeConsola implements Observer{
 
     @Override
     public void update(Observable observable, Object value) {
-         System.out.println("holaaaaaaa");
+        
     }
     
 }

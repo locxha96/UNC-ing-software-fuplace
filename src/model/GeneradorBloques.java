@@ -1,6 +1,6 @@
 package model;
 
-public class GeneradorBloques extends Figura {
+public class GeneradorBloques extends Figura implements Observador {
 
 int repeticionBloque;
     public GeneradorBloques(int x, int y, int ANCHO, int ALTO, int repeticionBloque) {
@@ -8,6 +8,8 @@ int repeticionBloque;
         this.repeticionBloque= repeticionBloque;
 
     }
+ 
+    
     public void setPos(int x,int y) {
         setX(x);
         setY(y);
@@ -24,6 +26,11 @@ int repeticionBloque;
         setY(0);
         setANCHO(0);
         setALTO(0);
+    }
+
+       @Override
+    public void update() {
+        setX(0);
     }
 
 }
