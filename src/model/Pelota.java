@@ -5,13 +5,12 @@ import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 
-public class Pelota implements SujetoObservable{
-private ArrayList<Observador> observadores;
+public class Pelota implements SujetoObservable {
 
-    boolean borrar = false;
+    private ArrayList<Observador> observadores;
+
     boolean restaVidas = false;
     private float TAMX = 15;//eje x elipse (en el circulo si son 
-
     private float masa;
     private float TAMY = 15;//eje y elipse
     private double x = 0;
@@ -21,20 +20,8 @@ private ArrayList<Observador> observadores;
     Color color = Color.GREEN;
     Rectangle2D limites;
 
-
-
-// Lo podemos usar para la seleccion de nivel, pero no es necesario darle un color, solo el diametro para el nivel
-/* 
-public Pelota(Color color,int diametro)
-{
-TAMX=diametro;
-TAMY=diametro;
-masa=diametro*10;
-this.color=color;
-x=(int)(Math.random()*200);
-y=(int)(Math.random()*200);
-}*/
     public Pelota() {
+        observadores = new ArrayList<>();
         x = 900;
         y = 400;
     }
@@ -56,16 +43,19 @@ y=(int)(Math.random()*200);
         if (colisionBlock) {
             dy = -dy;
             y = 200;
-            borrarBlock();
+            // borrarBlock(); evito todo esto por usar el observer
+            notificar();
         }//extremno derecho
         if (x + TAMX >= limites.getMaxX()) {
             x = limites.getMaxX() - TAMX;
             dx = -dx;
+
         }//parte inferior
         if (y + TAMY >= limites.getMaxY()) {
             y = limites.getMaxY() - TAMY;
             dy = -dy;
             restaVidas = true;
+
         }//extremo izquierdo
         if (x < limites.getMinX()) {
             x = limites.getMinX();
@@ -77,11 +67,17 @@ y=(int)(Math.random()*200);
         }
     }
 
+    /*
     public void borrarBlock() {
         borrar = true;
 
     }
-
+      public boolean getValor() {
+        return borrar;
+    }
+       public void setValor() {
+        borrar = false;
+    }*/
     public boolean getPierde() {
         return restaVidas;
     }
@@ -90,15 +86,7 @@ y=(int)(Math.random()*200);
         restaVidas = false;
     }
 
-    public boolean getValor() {
-        return borrar;
-    }
-
-    public void setValor() {
-        borrar = false;
-    }
 //Forma de la pelota en su posición inicial
-
     public Ellipse2D getShape() {
         return new Ellipse2D.Double(x, y, TAMX, TAMY);
     }
@@ -106,14 +94,6 @@ y=(int)(Math.random()*200);
     public Color getColor() {
         return color;
     }
-/*
-    public void pintar_bola(Graphics g) {
-        g.setColor(color);
-
-        Graphics2D g2 = (Graphics2D) g;
-        g2.fill(new Ellipse2D.Double(x, y, TAMX, TAMY));
-        mueve_pelota(limites, true, true);
-    }*/ //Se podria usar
 
     public double getX() {
         return x;
@@ -146,17 +126,17 @@ y=(int)(Math.random()*200);
     public void setDy(double desplazamientoy) {
         dy = desplazamientoy;
     }
-   public void agregarObservadores(Observador o){
+
+    public void agregarObservadores(Observador o) {
         observadores.add(o);
     }
-       @Override
+
+    @Override
     public void notificar() {
-        for(Observador o: observadores) {
+        for (Observador o : observadores) {
             o.update();
         }
-        
- }
-    
-   
+
+    }
 
 }

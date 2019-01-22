@@ -8,10 +8,6 @@ public class Jugador extends Observable implements Observador {
     private static int puntaje = 0;
     private int vidas = 2;
 
-    public void setPuntaje(int Puntaje) {
-        this.puntaje = puntaje;
-    }
-
     public void setVidas() {
         vidas = vidas - 1;
         if (vidas == 0) {//llama solo si perdio
@@ -46,7 +42,7 @@ public class Jugador extends Observable implements Observador {
 
     @Override
     public void update() {
-       setVidas();
+       setPuntaje();
     }
     
 

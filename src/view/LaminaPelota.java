@@ -7,7 +7,6 @@ import controller.NivelMedio;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.util.ArrayList;
 import javax.swing.JPanel;
 import java.awt.geom.Rectangle2D;
 import java.util.logging.Level;
@@ -17,10 +16,7 @@ import model.Barra;
 import model.GeneradorBloques;
 import model.Jugador;
 import static model.Jugador.getPuntaje;
-import model.OberservadorDeConsola;
-import model.Observador;
 import model.ObservadorGrafico;
-import model.Pelota;
 import model.Singleton;
 import static view.Principal.lvl;
 import static view.Principal.nombre;
@@ -34,7 +30,6 @@ public class LaminaPelota extends JPanel {
     private GeneradorBloques bloques;
     JLabel puntaje = new JLabel(getPuntaje(), JLabel.CENTER);
     JLabel life = new JLabel("Vidas", JLabel.CENTER);
-//Añadimos pelota a la lámina
 
     public LaminaPelota() {
         add(puntaje);
@@ -45,12 +40,9 @@ public class LaminaPelota extends JPanel {
         bloques = new GeneradorBloques(controller.getx(), controller.gety(), controller.getAnchoBloque(), controller.getAltoBloque(), controller.getCantidad());
         jugadores = new Jugador(nombre);
         ObservadorGrafico o = new ObservadorGrafico();
-        OberservadorDeConsola a = new OberservadorDeConsola();
         jugadores.addObserver(o);
-        jugadores.addObserver(a);
-
-        
-       //singleton.getPelota().agregarObservadores(bloques); // NO FUNCIONA EL OBSERVER PARA VIDAS*********
+        singleton.getPelota().agregarObservadores(bloques); //AGREGO al observador
+        singleton.getPelota().agregarObservadores(jugadores);
     }
 
     public void CrearSingleton() {
@@ -68,13 +60,12 @@ public class LaminaPelota extends JPanel {
         puntaje.setText(getPuntaje());
         life.setText(jugadores.getVida());
 
-        singleton.getPelota().mueve_pelota(getBounds(), colision(ba.getBarra()), colision(bloques.getBloque()));
-        if (singleton.getPelota().getValor() == true) {
+        singleton.getPelota().mueve_pelota(getBounds(), colision(ba.getBarra()), colision(bloques.getBloque()));//reviso la colisión
+        /* if (singleton.getPelota().getValor() == true) { //ya no lo uso por usar el patron observer
             singleton.getPelota().setValor();
             bloques.hitBlock();
             jugadores.setPuntaje();
-            System.out.println(jugadores.getPuntaje());
-        }
+        }*/
         if (singleton.getPelota().getPierde() == true) {
             jugadores.setVidas();
             singleton.getPelota().setRestaVidas();
@@ -113,7 +104,7 @@ public class LaminaPelota extends JPanel {
         g2.setColor(Color.BLACK);
         dibujar(g2);
 
-        actualizar();//ACA SE PODRIA USAR OBSERVER PARA la barra y buscar EL METODO Q MUEVE actu la pelota!!!
+        actualizar();
         try {
             Thread.sleep(5);
         } catch (InterruptedException ex) {
