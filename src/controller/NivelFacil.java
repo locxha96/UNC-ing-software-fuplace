@@ -9,7 +9,7 @@ public class NivelFacil extends NIVEL implements ControllerInterface {
         altoBloque = 30;
         anchoBarra = 80;
         altoBarra = 10;
-        cantidad=2;
+        cantidad=6;
     }
 
     @Override

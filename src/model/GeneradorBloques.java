@@ -2,7 +2,7 @@ package model;
 
 public class GeneradorBloques extends Figura implements Observador {
 
-    int repeticionBloque;
+    private int repeticionBloque;
 
     public GeneradorBloques(int x, int y, int ANCHO, int ALTO, int repeticionBloque) {
         super(x, y, ANCHO, ALTO);

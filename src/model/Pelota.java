@@ -9,7 +9,7 @@ public class Pelota implements SujetoObservable {
 
     private ArrayList<Observador> observadores;
 
-    boolean restaVidas = false;
+    private boolean restaVidas = false;
     private float TAMX = 15;//eje x elipse (en el circulo si son 
     private float masa;
     private float TAMY = 15;//eje y elipse

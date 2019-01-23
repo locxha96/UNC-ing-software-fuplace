@@ -9,7 +9,7 @@ public class NivelMedio extends NIVEL implements ControllerInterface {
         altoBloque = 30;
         anchoBarra = 50;
         altoBarra = 10;
-        cantidad=3;
+        cantidad=8;
     }
 
     @Override

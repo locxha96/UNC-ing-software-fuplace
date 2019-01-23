@@ -11,7 +11,7 @@ public class Jugador extends Observable implements Observador {
     public void setVidas() {
         vidas = vidas - 1;
         if (vidas == 0) {//llama solo si perdio
-          setChanged();
+            setChanged();
         }
     }
 
@@ -22,7 +22,7 @@ public class Jugador extends Observable implements Observador {
     public void setPuntaje() {
         puntaje = puntaje + 10;
     }
-    
+
     public String getNombre() {
         return nombre;
     }
@@ -32,18 +32,18 @@ public class Jugador extends Observable implements Observador {
         return "Jugador{" + "Nombre=" + nombre + ", Puntaje=" + puntaje + '}';
 
     }
-   public String getVida(){
-       return "Vidas:" + vidas;
-   }
-           
+
+    public String getVida() {
+        return "Vidas:" + vidas;
+    }
+
     public static String getPuntaje() {
         return "Tu puntaje es puntaje: " + puntaje;
     }
 
     @Override
     public void update() {
-       setPuntaje();
+        setPuntaje();
     }
-    
 
 }
