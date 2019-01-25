@@ -24,16 +24,17 @@ import static view.Principal.lvl;
 
 public class LaminaPelota extends JPanel {
 
-    ControllerInterface controller;
-    List<Jugador> jugadores = JugadorDAO.getInstancia().getAll();
-    Singleton singleton;
-    Barra ba;
+    private ControllerInterface controller;
+    private List<Jugador> jugadores = JugadorDAO.getInstancia().getAll();
+    private Singleton singleton;
+    private Barra ba;
+    private boolean DibujarBrick = false;
     private GeneradorBloques bloques;
     JLabel puntaje = new JLabel(getPuntaje(), JLabel.CENTER);
     JLabel life = new JLabel("Vidas", JLabel.CENTER);
 
     public LaminaPelota() {
-        
+
         Principal.init(); // porque init()es un metodo static, osea es de la clase entonces se lo aplico a la clase
         //Mostramos todos los alumnos
         for (Jugador a : jugadores) {
@@ -41,14 +42,23 @@ public class LaminaPelota extends JPanel {
         }
         add(puntaje);
         add(life);
-        CrearSingleton();
+        // CrearSingleton();
         elegirNivel(lvl);
         ba = new Barra(5, 750, controller.getAnchoBarra(), controller.getAltoBarra());
-        bloques = new GeneradorBloques(controller.getx(), controller.gety(), controller.getAnchoBloque(), controller.getAltoBloque(), controller.getCantidad());
+        // bloques = new GeneradorBloques(controller.getx(), controller.gety(), controller.getAnchoBloque(), controller.getAltoBloque(), controller.getCantidad());
         ObservadorGrafico o = new ObservadorGrafico();
         jugadores.get(0).addObserver(o);
+
+    }
+
+    public void agregarObservers() {
         singleton.getPelota().agregarObservadores(bloques); //AGREGO al observador
         singleton.getPelota().agregarObservadores(jugadores.get(0));
+    }
+
+    public void crearBloques() {
+        bloques = new GeneradorBloques(controller.getx(), controller.gety(), controller.getAnchoBloque(), controller.getAltoBloque(), controller.getCantidad());
+        DibujarBrick = true;
     }
 
     public void CrearSingleton() {
@@ -56,25 +66,29 @@ public class LaminaPelota extends JPanel {
     }
 
     public void dibujar(Graphics2D g) {
-        g.fill(singleton.getPelota().getShape());
         g.fill(ba.getBarra());
-        g.fill(bloques.getBloque());
+        if (DibujarBrick == true) {
+            g.fill(bloques.getBloque());
+            g.fill(singleton.getPelota().getShape());
+        }
     }
 
     public void actualizar() { //para mover la barra en la laminaa
         ba.MoverBarra(getBounds());
-       puntaje.setText(getPuntaje());
+        puntaje.setText(getPuntaje());
         life.setText(jugadores.get(0).getVida());
-        singleton.getPelota().mueve_pelota(getBounds(), colision(ba.getBarra()), colision(bloques.getBloque()));//reviso la colisión
-        /* if (singleton.getPelota().getValor() == true) { //ya no lo uso por usar el patron observer
+        if (DibujarBrick == true) {
+            singleton.getPelota().mueve_pelota(getBounds(), colision(ba.getBarra()), colision(bloques.getBloque()));//reviso la colisión
+            /* if (singleton.getPelota().getValor() == true) { //ya no lo uso por usar el patron observer
             singleton.getPelota().setValor();
             bloques.hitBlock();
             jugadores.setPuntaje();
         }*/
-        if (singleton.getPelota().getPierde() == true) {
-            jugadores.get(0).setVidas();
-            singleton.getPelota().setRestaVidas();
-            jugadores.get(0).notifyObservers();
+            if (singleton.getPelota().getPierde() == true) {
+                jugadores.get(0).setVidas();
+                singleton.getPelota().setRestaVidas();
+                jugadores.get(0).notifyObservers();
+            }
         }
 
     }
@@ -110,7 +124,7 @@ public class LaminaPelota extends JPanel {
         dibujar(g2);
 
         actualizar();
-       try {
+        try {
             Thread.sleep(3);
         } catch (InterruptedException ex) {
             Logger.getLogger(LaminaPelota.class.getName()).log(Level.SEVERE, null, ex);

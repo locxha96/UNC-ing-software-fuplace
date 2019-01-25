@@ -1,8 +1,11 @@
 package controller;
 
+import view.LaminaPelota;
+
 
 public interface ControllerInterface {
- 
+   LaminaPelota getPanel();
+   void Crear();
    int getx();
    int gety();
    int getRadio();

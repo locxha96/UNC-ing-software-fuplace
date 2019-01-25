@@ -1,12 +1,13 @@
 package main;
 
+import view.Inicio;
 import view.Principal;
 
-public class Break {
+public class TBreaker {
 
     public static void main(String[] args) {
 
-        Principal v = new Principal();
+        Inicio v = new Inicio();
         v.setLocationRelativeTo(null);
         v.setVisible(true);
 

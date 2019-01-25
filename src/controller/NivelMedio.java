@@ -1,5 +1,7 @@
 package controller;
 
+import view.LaminaPelota;
+
 public class NivelMedio extends NIVEL implements ControllerInterface {
 
     public NivelMedio() {
@@ -50,6 +52,16 @@ public class NivelMedio extends NIVEL implements ControllerInterface {
     @Override
     public int getCantidad() {
         return cantidad;
+    }
+
+    @Override
+    public LaminaPelota getPanel() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void Crear() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

@@ -17,7 +17,6 @@ import model.JugadorDAO;
  * @author Cristian Velazquez
  */
 public class Principal extends javax.swing.JFrame {
-
 private static String nombre;
 public static int lvl;
     /**
@@ -162,6 +161,9 @@ public static int lvl;
          lvl = Integer.parseInt(txtd.getText());
         JFrame marco=new MarcoRebote();
         marco.setVisible(true);
+        marco.setTitle("Brick Breaker");
+       
+        
         this.dispose(); //oculto la ventana
         
         
