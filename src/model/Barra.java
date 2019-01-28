@@ -19,5 +19,9 @@ public class Barra extends Figura {
         }
 
     }
+    
+    public void bajaBarra(){
+        setY(getY()+1);
+    }
 
 }

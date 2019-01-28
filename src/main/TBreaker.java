@@ -1,7 +1,6 @@
 package main;
 
 import view.Inicio;
-import view.Principal;
 
 public class TBreaker {
 

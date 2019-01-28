@@ -15,8 +15,8 @@ public class ControllerTetris implements ControllerInterface {
     @Override
     public void Crear() {
         lamina = new LaminaPelota();
-     
-       
+        lamina.crearFigura();
+
     }
 
     @Override

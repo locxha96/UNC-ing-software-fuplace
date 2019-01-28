@@ -44,7 +44,7 @@ public class LaminaPelota extends JPanel {
         add(life);
         // CrearSingleton();
         elegirNivel(lvl);
-        ba = new Barra(5, 750, controller.getAnchoBarra(), controller.getAltoBarra());
+
         // bloques = new GeneradorBloques(controller.getx(), controller.gety(), controller.getAnchoBloque(), controller.getAltoBloque(), controller.getCantidad());
         ObservadorGrafico o = new ObservadorGrafico();
         jugadores.get(0).addObserver(o);
@@ -55,8 +55,11 @@ public class LaminaPelota extends JPanel {
         singleton.getPelota().agregarObservadores(bloques); //AGREGO al observador
         singleton.getPelota().agregarObservadores(jugadores.get(0));
     }
-
-    public void crearBloques() {
+    public void crearFigura(){
+        ba = new Barra(10, 70, 10, 40);
+    }
+    public void crearBloqueBarra() {
+        ba = new Barra(5, 750, controller.getAnchoBarra(), controller.getAltoBarra());
         bloques = new GeneradorBloques(controller.getx(), controller.gety(), controller.getAnchoBloque(), controller.getAltoBloque(), controller.getCantidad());
         DibujarBrick = true;
     }
@@ -87,10 +90,10 @@ public class LaminaPelota extends JPanel {
             if (singleton.getPelota().getPierde() == true) {
                 jugadores.get(0).setVidas();
                 singleton.getPelota().setRestaVidas();
-                jugadores.get(0).notifyObservers();
+                jugadores.get(0).notifyObservers(); //avisa que la pelota toco al bloque para que cambie de posicion y se sumen puntos
             }
         }
-
+        else ba.bajaBarra();
     }
 
     public void elegirNivel(int lvl) {

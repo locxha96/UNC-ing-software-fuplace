@@ -6,7 +6,7 @@ import view.LaminaPelota;
 public class ControllerBrick implements ControllerInterface {
 
     JFrame marco;
-    LaminaPelota lamina;
+    private LaminaPelota lamina;
 
     public ControllerBrick() {
 
@@ -15,8 +15,8 @@ public class ControllerBrick implements ControllerInterface {
     @Override
     public void Crear() {
         lamina = new LaminaPelota();
-        lamina.crearBloques();
-         lamina.CrearSingleton();
+        lamina.crearBloqueBarra();
+        lamina.CrearSingleton();
         lamina.agregarObservers();
     }
 
