@@ -10,7 +10,7 @@ public class Barra extends Figura {
     }
      //desplazamineto de la barra horizontal
 
-    public void MoverBarra(Rectangle limites) {
+    public void moverBarra(Rectangle limites) {
         if (Teclado.a && getX() > limites.getMinX()) {
             setX(getX() - 1);
         }
