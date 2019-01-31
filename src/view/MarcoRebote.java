@@ -13,7 +13,7 @@ public class MarcoRebote extends JFrame {
 
     private LaminaPelota lamina;
     private HiloPelota hilo;
-     ControllerInterface b;
+    private ControllerInterface b;
  
 
     public MarcoRebote() {

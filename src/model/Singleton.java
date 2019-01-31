@@ -2,7 +2,7 @@ package model;
 
 public class Singleton {
 
-    private static Pelota pelota;
+    private static Pelota pelota; // porque es unica de la clase
     private static Singleton instancia;
 
     private Singleton() {

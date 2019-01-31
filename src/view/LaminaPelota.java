@@ -20,7 +20,7 @@ import static model.Jugador.getPuntaje;
 import model.JugadorDAO;
 import model.ObservadorGrafico;
 import model.Singleton;
-import static view.Principal.lvl;
+import static view.MenuJuego.lvl;
 
 public class LaminaPelota extends JPanel {
 
@@ -35,7 +35,7 @@ public class LaminaPelota extends JPanel {
 
     public LaminaPelota() {
 
-        Principal.init(); // porque init()es un metodo static, osea es de la clase entonces se lo aplico a la clase
+        MenuJuego.init(); // porque init()es un metodo static, osea es de la clase entonces se lo aplico a la clase
         //Mostramos todos los alumnos
         for (Jugador a : jugadores) {
             System.out.println(a);

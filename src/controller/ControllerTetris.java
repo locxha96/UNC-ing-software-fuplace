@@ -6,7 +6,7 @@ import view.LaminaPelota;
 public class ControllerTetris implements ControllerInterface {
 
     JFrame marco;
-    LaminaPelota lamina;
+    private LaminaPelota lamina;
 
     public ControllerTetris() {
 

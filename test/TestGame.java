@@ -18,7 +18,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import view.LaminaPelota;
-import view.Principal;
+import view.MenuJuego;
 
 /**
  *
@@ -35,7 +35,7 @@ public class TestGame {
     }
     @Test
         public void testCreacionNivelFacil(){ // xq falla?
-        Principal p = new Principal();
+        MenuJuego p = new MenuJuego();
         p.lvl = 1;
         LaminaPelota l = new LaminaPelota();
         ControllerInterface facil = new NivelFacil();
@@ -44,7 +44,7 @@ public class TestGame {
     
    @Test
     public void testCreacionNivelMedio(){ // xq falla?
-        Principal p = new Principal();
+        MenuJuego p = new MenuJuego();
         p.lvl = 2;
         LaminaPelota l = new LaminaPelota();
         ControllerInterface medio = new NivelMedio();
@@ -52,7 +52,7 @@ public class TestGame {
          }
     @Test
     public void testCreacionNivelDificil(){ // xq falla?
-        Principal p = new Principal();
+        MenuJuego p = new MenuJuego();
         p.lvl = 3;
         LaminaPelota l = new LaminaPelota();
         ControllerInterface dificil = new NivelDificil();
@@ -60,7 +60,7 @@ public class TestGame {
          }
     
     /*public void testCreacionNivelRandom(){ // xq falla?
-        Principal p = new Principal();
+        MenuJuego p = new MenuJuego();
         p.lvl = ;
         LaminaPelota l = new LaminaPelota();
         ControllerInterface dificil = new NivelDificil();
@@ -76,7 +76,7 @@ public class TestGame {
     
     /*@Test
     public void testNombre(){
-        Principal p = new Principal();
+       MenuJuego p = new MenuJuego();
         p.nombre = "Juan";
         LaminaPelota l = new LaminaPelota();        
         assertEquals("Juan", l.jugadores.get(0).getNombre());

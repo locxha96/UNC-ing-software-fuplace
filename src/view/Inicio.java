@@ -11,7 +11,7 @@ package view;
  */
 public class Inicio extends javax.swing.JFrame {
 
-   Tetris tetris;
+  
    private static boolean t= false;
   
     public Inicio() {
@@ -71,7 +71,7 @@ public class Inicio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-    Principal p = new Principal();
+    MenuJuego p = new MenuJuego();
         p.setLocationRelativeTo(null);
         p.setVisible(true);
         t=false;
@@ -79,7 +79,7 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        Principal p = new Principal();
+        MenuJuego p = new MenuJuego();
         p.setLocationRelativeTo(null);
         p.setVisible(true);
         t=true;
