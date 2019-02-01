@@ -17,7 +17,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import view.LaminaPelota;
+import view.Lamina;
 import view.MenuJuego;
 
 /**
@@ -37,7 +37,7 @@ public class TestGame {
         public void testCreacionNivelFacil(){ // xq falla?
         MenuJuego p = new MenuJuego();
         p.lvl = 1;
-        LaminaPelota l = new LaminaPelota();
+        Lamina l = new Lamina();
         ControllerInterface facil = new NivelFacil();
         assertEquals(facil.getAnchoBarra(),l.getController().getAnchoBarra());
          }
@@ -46,7 +46,7 @@ public class TestGame {
     public void testCreacionNivelMedio(){ // xq falla?
         MenuJuego p = new MenuJuego();
         p.lvl = 2;
-        LaminaPelota l = new LaminaPelota();
+        Lamina l = new Lamina();
         ControllerInterface medio = new NivelMedio();
         assertEquals(medio.getAnchoBarra(),l.getController().getAnchoBarra());
          }
@@ -54,7 +54,7 @@ public class TestGame {
     public void testCreacionNivelDificil(){ // xq falla?
         MenuJuego p = new MenuJuego();
         p.lvl = 3;
-        LaminaPelota l = new LaminaPelota();
+        Lamina l = new Lamina();
         ControllerInterface dificil = new NivelDificil();
         assertEquals(dificil.getAnchoBarra(),l.getController().getAnchoBarra());
          }
@@ -62,7 +62,7 @@ public class TestGame {
     /*public void testCreacionNivelRandom(){ // xq falla?
         MenuJuego p = new MenuJuego();
         p.lvl = ;
-        LaminaPelota l = new LaminaPelota();
+        Lamina l = new Lamina();
         ControllerInterface dificil = new NivelDificil();
         assertEquals(dificil.getAnchoBarra(),l.getController().getAnchoBarra());
          }*/
@@ -78,7 +78,7 @@ public class TestGame {
     public void testNombre(){
        MenuJuego p = new MenuJuego();
         p.nombre = "Juan";
-        LaminaPelota l = new LaminaPelota();        
+        Lamina l = new Lamina();        
         assertEquals("Juan", l.jugadores.get(0).getNombre());
     }*/
     

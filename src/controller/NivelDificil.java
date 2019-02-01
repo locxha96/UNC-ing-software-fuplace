@@ -1,6 +1,6 @@
 package controller;
 
-import view.LaminaPelota;
+import view.Lamina;
 
 public class NivelDificil extends NIVEL implements ControllerInterface {
 
@@ -55,7 +55,7 @@ public class NivelDificil extends NIVEL implements ControllerInterface {
     }
 
     @Override
-    public LaminaPelota getPanel() {
+    public Lamina getPanel() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

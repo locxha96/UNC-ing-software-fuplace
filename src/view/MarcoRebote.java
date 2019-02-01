@@ -11,7 +11,7 @@ import static view.Inicio.getT;
 
 public class MarcoRebote extends JFrame {
 
-    private LaminaPelota lamina;
+    private Lamina lamina;
     private HiloPelota hilo;
     private ControllerInterface b;
  

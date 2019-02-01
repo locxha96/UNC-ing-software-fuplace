@@ -1,12 +1,12 @@
 package controller;
 
 import javax.swing.JFrame;
-import view.LaminaPelota;
+import view.Lamina;
 
 public class ControllerTetris implements ControllerInterface {
 
     JFrame marco;
-    private LaminaPelota lamina;
+    private Lamina lamina;
 
     public ControllerTetris() {
 
@@ -14,13 +14,13 @@ public class ControllerTetris implements ControllerInterface {
 
     @Override
     public void Crear() {
-        lamina = new LaminaPelota();
+        lamina = new Lamina();
         lamina.crearFigura();
 
     }
 
     @Override
-    public LaminaPelota getPanel() {
+    public Lamina getPanel() {
         return lamina;
     }
 

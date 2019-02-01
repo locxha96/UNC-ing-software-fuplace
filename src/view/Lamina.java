@@ -22,7 +22,7 @@ import model.ObservadorGrafico;
 import model.Singleton;
 import static view.MenuJuego.lvl;
 
-public class LaminaPelota extends JPanel {
+public class Lamina extends JPanel {
 
     private ControllerInterface controller;
     private List<Jugador> jugadores = JugadorDAO.getInstancia().getAll();
@@ -33,7 +33,7 @@ public class LaminaPelota extends JPanel {
     JLabel puntaje = new JLabel(getPuntaje(), JLabel.CENTER);
     JLabel life = new JLabel("Vidas", JLabel.CENTER);
 
-    public LaminaPelota() {
+    public Lamina() {
 
         MenuJuego.init(); // porque init()es un metodo static, osea es de la clase entonces se lo aplico a la clase
         //Mostramos todos los alumnos
@@ -133,7 +133,7 @@ public class LaminaPelota extends JPanel {
         try {
             Thread.sleep(3);
         } catch (InterruptedException ex) {
-            Logger.getLogger(LaminaPelota.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Lamina.class.getName()).log(Level.SEVERE, null, ex);
         }
         repaint();
     }

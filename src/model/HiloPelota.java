@@ -2,14 +2,14 @@ package model;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import view.LaminaPelota;
+import view.Lamina;
 
 public class HiloPelota extends Thread {
     //para actualizar la pelota
 
-    private static LaminaPelota lamina;
+    private static Lamina lamina;
  
-    public HiloPelota(LaminaPelota lamina) {
+    public HiloPelota(Lamina lamina) {
 
         this.lamina = lamina;
     }

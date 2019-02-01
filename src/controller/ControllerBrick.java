@@ -1,12 +1,12 @@
 package controller;
 
 import javax.swing.JFrame;
-import view.LaminaPelota;
+import view.Lamina;
 
 public class ControllerBrick implements ControllerInterface {
 
-    JFrame marco;
-    private LaminaPelota lamina;
+    private JFrame marco;
+    private Lamina lamina;
 
     public ControllerBrick() {
 
@@ -14,14 +14,14 @@ public class ControllerBrick implements ControllerInterface {
 
     @Override
     public void Crear() {
-        lamina = new LaminaPelota();
+        lamina = new Lamina();
         lamina.crearBloqueBarra();
         lamina.CrearSingleton();
         lamina.agregarObservers();
     }
 
     @Override
-    public LaminaPelota getPanel() {
+    public Lamina getPanel() {
         return lamina;
     }
 

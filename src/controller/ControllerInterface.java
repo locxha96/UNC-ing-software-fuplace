@@ -1,10 +1,10 @@
 package controller;
 
-import view.LaminaPelota;
+import view.Lamina;
 
 
 public interface ControllerInterface {
-   LaminaPelota getPanel();
+   Lamina getPanel();
    void Crear();
    int getx();
    int gety();
