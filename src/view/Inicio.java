@@ -31,6 +31,7 @@ public class Inicio extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setForeground(java.awt.Color.red);
 
         jButton1.setText("Juego 1");
         jButton1.addActionListener(new java.awt.event.ActionListener() {

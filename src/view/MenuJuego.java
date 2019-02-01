@@ -161,7 +161,7 @@ public static int lvl;
          lvl = Integer.parseInt(txtd.getText());
         JFrame marco=new MarcoRebote();
         marco.setVisible(true);
-        marco.setTitle("Brick Breaker");
+        marco.setTitle("TBREAKER");
        
         
         this.dispose(); //oculto la ventana

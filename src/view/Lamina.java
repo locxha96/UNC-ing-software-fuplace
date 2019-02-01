@@ -61,7 +61,7 @@ public class Lamina extends JPanel {
     }
 
     public void crearBloqueBarra() {
-        ba = new Barra(5, 750, controller.getAnchoBarra(), controller.getAltoBarra());
+        ba = new Barra(5, 700, controller.getAnchoBarra(), controller.getAltoBarra());
         bloques = new GeneradorBloques(controller.getx(), controller.gety(), controller.getAnchoBloque(), controller.getAltoBloque(), controller.getCantidad());
         DibujarBrick = true;
     }
