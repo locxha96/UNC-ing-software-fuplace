@@ -36,6 +36,9 @@ public class Jugador extends Observable implements Observador {
     public String getVida() {
         return "Vidas:" + vidas;
     }
+    public int Vida() {
+        return vidas;
+    }
 
     public static String getPuntaje() {
         return "Tu puntaje es puntaje: " + puntaje;

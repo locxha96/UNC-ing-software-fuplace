@@ -82,22 +82,17 @@ public class TestGame {
         assertEquals(20, jugadores.get(0).Puntaje());//Impacta dos bloques
     }
 
-    public void testPierde() {
+    @Test
+    public void testGanaJuego() {
         GeneradorBloques g = new GeneradorBloques(20, 20, 30, 10, 4);
         Pelota p = new Pelota();
         Rectangle r = new Rectangle();
-        p. mueve_pelota(r,false,true);
-        p. mueve_pelota(r,false,true);
-        assertEquals(10, jugadores.get(1).Puntaje());
+        p.mueve_pelota(r, false, true);
+        p.mueve_pelota(r, false, true);
+        p.mueve_pelota(r, false, true);
+        p.mueve_pelota(r, false, true);
+        assertEquals(20, jugadores.get(0).Puntaje());
     }
-    
-     public void testGanaPuntos2() {
-        GeneradorBloques g = new GeneradorBloques(20, 20, 30, 10, 4);
-        Pelota p = new Pelota();
-        p.agregarObservadores(g);
-        p.agregarObservadores(jugadores.get(0));
-        p.notificar();
-        p.notificar();
-        assertEquals(20, jugadores.get(1).Puntaje());//Impacta dos bloques
-    }
+
+  
 }
