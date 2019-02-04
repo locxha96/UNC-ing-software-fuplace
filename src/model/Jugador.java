@@ -41,6 +41,10 @@ public class Jugador extends Observable implements Observador {
         return "Tu puntaje es puntaje: " + puntaje;
     }
 
+    public static int Puntaje() {
+        return puntaje;
+    }
+
     @Override
     public void update() {
         setPuntaje();

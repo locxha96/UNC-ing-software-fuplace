@@ -151,10 +151,10 @@ public static int lvl;
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         if (!datosValidos()) {
-            JOptionPane.showMessageDialog(this, "Datos no validos!");
+            JOptionPane.showMessageDialog(this, "No es un nombre valido");
             return; }
         if (!datosValidos2()) {
-            JOptionPane.showMessageDialog(this, "Datos no validos!");
+            JOptionPane.showMessageDialog(this, "No ha ingresado un numero!");
             return;
         }
          nombre = txtnombre.getText();
@@ -223,6 +223,7 @@ public static int lvl;
             }
         });
     }
+  
    
 public static void init(){
         JugadorDAO dao=JugadorDAO.getInstancia();

@@ -37,15 +37,12 @@ public class Lamina extends JPanel {
 
         MenuJuego.init(); // porque init()es un metodo static, osea es de la clase entonces se lo aplico a la clase
         //Mostramos todos los alumnos
-        for (Jugador a : jugadores) {
+       /* for (Jugador a : jugadores) {
             System.out.println(a);
-        }
+        }*/
         add(puntaje);
         add(life);
-        // CrearSingleton();
         elegirNivel(lvl);
-
-        // bloques = new GeneradorBloques(controller.getx(), controller.gety(), controller.getAnchoBloque(), controller.getAltoBloque(), controller.getCantidad());
         ObservadorGrafico o = new ObservadorGrafico();
         jugadores.get(0).addObserver(o);
 
